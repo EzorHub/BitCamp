@@ -5,7 +5,7 @@
 근무개월수가 높은순으로 출력
 
 select eno,ename,dname,dloc,sal*12,hiredate,((sysdate-hiredate)/30)M from emp,dept 
-where emp.dno=dept.dno and mgr = (select eno from emp where ename='박선영') order by M desc;
+where emp.dno=dept.dno and mgr = (select eno from emp where ename='박개똥') order by M desc;
 -----------------------------------------------------------------------
 select mgr, eno, ename, dname, dloc,
 nvl(sal, 0)*12 esal,
@@ -26,9 +26,5 @@ round(months_between(sysdate,hiredate)) wmonths
 from dept d, emp e 
 where d.dno= e.dno) e, emp m
 where e.mgr = m.eno
-and m.ename='박선영';
+and m.ename='박개똥';
 
-**서버충돌로오류날때**
-netstat -ano
-포트번호 8088찾아서 해당 PID번호를 다음에 입력
-taskkill /F /PID PID번호

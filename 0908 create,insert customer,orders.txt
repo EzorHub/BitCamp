@@ -1,0 +1,17 @@
+
+
+create table customer(
+custid number primary key,
+name varchar2(40),
+addr varchar2(50),
+phone varchar2(20)
+);
+
+
+create table orders(
+orderid number primary key,
+custid number references customer(custid),
+bookid number references book(bookid),
+saleprice number,
+orderdate Date
+);

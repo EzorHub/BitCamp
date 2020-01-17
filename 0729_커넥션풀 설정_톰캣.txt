@@ -1,0 +1,191 @@
+<Resource name="oracle" 
+auth="Container"
+type="javax.sql.DataSource" 
+driverClassName="oracle.jdbc.driver.OracleDriver"
+url="jdbc:oracle:thin:@203.236.209.116:1521:XE" username="c##madang"
+password="madang" 
+maxActive="20" maxIdle="10"
+maxWait="-1" />
+
+-------------------------
+Context initContext = new InitialContext();
+DataSource ds = (DataSource)envContext.lookup("java:/comp/env/oracle");
+Connection conn = ds.getConnection();
+----------커넥션 풀 설정- 톰캣이 제공하는 커넷션풀 제공 설정법*
+미리 일정량의 커넥션을 만들어두는것
+
+우선 해당 프로젝트 jsp실행
+server.xml
+context 에서 슬래시 삭제
+안에 resourse 복붙
+본인 dbㅅ버에 맞도록 이름들 바꿔줌
+
+1. Context configuration 톰캣이 제공한 커넥션 풀
+In a similar manner to the mysql config above, 
+you will need to define your Datasource in your Context. 
+Here we define a Datasource called myoracle using the thin driver to connect as user scott,
+ password tiger to the sid called mysid. (Note: with the thin driver this sid is not the same as the tnsname). 
+The schema used will be the default schema for the user scott.
+
+Use of the OCI driver should simply involve a changing thin to oci in the URL string.
+
+<Resource name="jdbc/myoracle(내가정할수있는이름)" auth="Container"
+              type="javax.sql.DataSource" 리소스 이름으로 해당 타입을 반환함
+	      driverClassName="oracle.jdbc.<driver.추가>OracleDriver"
+              url="jdbc:oracle:thin:@127.0.0.1:1521:이름바꾸기"
+              username="scott" password="tiger"
+	      maxActive="20" maxIdle="10"  서버의 성능이나 시스템 평소 클라이언트 수에 맞도록
+              maxWait="-1"/>
+
+--------------------------
+3. Code example 코드 사용법
+You can use the same example application as above (assuming you create the required DB instance, tables etc.) 
+replacing the Datasource code with something like
+
+Context initContext = new InitialContext(); 콘텍스트 객체생성
+Context envContext  = (Context)initContext.lookup("java:/comp/env"); 설정한 리소스 이름 찾기
+DataSource ds = (DataSource)envContext.lookup("jdbc/myoracle(내가정한이름)"); 
+Connection conn = ds.getConnection();
+//etc.
+---------------------------
+
+코드양이 더 늘어나지만
+왜쓰는지를 집중하셈-클라이언트 대기시간을 줄일 수 있음
+
+
+<Connector connectionTimeout="20000" port="8088" protocol="HTTP/1.1" redirectPort="8443"
+    	URIEncoding="UTF-8"/>
+
+
+**@으로 시작하는 표현을 어노테이션이라고 함
+어노테이션을 xml로 된 환경설정을 대신함
+web초기에 환경설정 파일을 xml로 했으나
+점점 xml이 비대해 이것을 간소하하게 시켜주는 것**
+
+
+서블릿:
+java기반의 웹프로그래밍 기술
+서블릿을 만들려면
+HttpServlet을 상속받아 
+doGet혹은 doPost를 오버라이딩함
+
+만약 사용자가 get방식으로 요청하면
+doGet이 동작되고,
+만약 사용자가 post방식으로 요청하면
+doPost가 동작됨
+
+get방식이랑 주소표시줄에 url을 직접쓰거나
+a태그에의해 연결되는 방식을 의미함
+
+post방식이란 form태그가 전송방식인 method="post"
+일때의 방식임
+
+서블릿을 작성하고 서블릿을 실행하려면
+어노테이션에 의한 방식과 web.xml에 설정하는 방식이 있음*
+
+web.xml은 웹어플리케이션의 환경설정을 위한 파일임.
+웹 초기에는 web.xml을 이용하여
+환경설정하였으나
+근래에는 보다 간소한 어노테이션방식을 선호함.
+
+서블릿을 이용하여 html을 생성하는 것은
+자바클래스를 만들고 컴파일하여 서비스해야하는 등
+번거롭고 사용하기 어려움
+이를 쉽게 하기 위한 기술이 jsp!
+
+jsp 문서는 html태그와 자바문법을 같이 사용할 수 있는 것이 장점이고
+보다 쉽게 동적인 html을 생성할 수 있음
+그러나 사용자의 요구가 복잡하고
+규모가 커질수록 하나의 jsp안에 html과 자바문법을 혼용하는 것은 
+협업이나 유지보수를 어렵게 하는 요인이 됨
+
+이것을 해결을 위해
+근래에는 MVC패턴을 적용해 웹프로그래밍을 개발함
+이때 C는 Controller를 의미하며 이것은 서블릿으로 만들어짐.
+
+만약 jsp를 작성해
+서비스를 요청하면 실제 내부적으로는
+요청한 jsp에 해당하는 서블릿 클래스 즉, .java를 생성함
+그리고 컴파일됨 그 컴파일한 것을 서비스 하는 것임
+
+따라서 <<최초>>에 어떤 jsp를 요청하면 톰켓은 사실 많이 바빠짐
+.java 만들고, .class 만들고,,
+
+(그러나 2번째 이후부터는)
+기존에 이미 .java, .class가 있다면
+이 작업을 반복하지 않음.
+
+실제 서비스를 하는 웹사이트라면
+한번 작성된 jsp를 반복적으로 수정하지는 않을것임
+
+BUT 공부중인경우
+한번 만들어진 jsp에 추가/수정에서 
+기존 오류날경우 - 삭제하면 다시 만들어줌!
+
+
+최초에 만들어진 주소~
+C:\day0729\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\work\Catalina\localhost\test\org\apache\jsp
+
+실제로 jsp가 동작하는 내용은 
+_jspService 메소드 안의 내용임
+
+이 메소드는 매개변수로
+request, response를 가짐
+
+그리고 이 메소드의 지역변수로
+final javax.servlet.jsp.PageContext pageContext;
+    javax.servlet.http.HttpSession session = null;
+    final javax.servlet.ServletContext application;
+    final javax.servlet.ServletConfig config;
+    javax.servlet.jsp.JspWriter out = null;
+    final java.lang.Object page = this;
+    javax.servlet.jsp.JspWriter _jspx_out = null;
+    javax.servlet.jsp.PageContext _jspx_page_context = null;
+
+를 가짐.
+
+이 모든것들이 바로 jsp의 내장객체임
+즉, jsp문서안에서 따로 객체를 생성하지 않고도
+바로 사용할 수 있는 객체임
+이중 가장 중요한 것은
+request, response, session, application 이며
+또 exeception이라는 내장객체도 있음
+만약, 웹문서에서 예외가 발생할 경우
+예외처리 jsp를 따로 만들 수 있는데
+이 문서의 isErrorPage=true라고 설정하면
+그 jsp에는 예외의 정보를 갖는 exeception이라는
+내장객체도 만들어짐
+
+상태유지를 위한 기술로
+cookie와 session을 대표적으로 이야기 함*
+
+session은 내장객체이지만
+cookie는 내장객체가 아님xxxxxxxxxxxxxxx*
+
+-----------------------------
+jsp의 문장구성요소
+
+1)지시자
+	<%@ page
+	자바클래스를 import하거나 
+	문서의 응답방식을 설정
+	<%@ include
+	이미 있는 jsp를 현재문서에 포함시킴
+	<%@ taglib
+	제어문이나 어떤 일처리를 위한 
+	자바문법을 태그가 대신함 - 반복/조건문
+2)선언문
+	jsp문서안에 메소드나 변수를 선언함
+	이것은 생성되는 서블릿의 멤버메소드, 멤버변수가 됨
+
+	<%!	
+	%>
+3)스크립트릿
+	온갖 자바문법을 표현
+	<%
+	%>
+
+4)표현식
+	변수 내용을 출력
+	<%=
+	%>

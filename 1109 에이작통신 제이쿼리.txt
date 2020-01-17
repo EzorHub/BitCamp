@@ -1,0 +1,132 @@
+	$("#f_submit").trigger('submit');	
+	
+ 	$("#create").click(function(){ 
+ 		 
+		
+ 		$("#f_submit").trigger('submit');
+ 		$("#f_submit").bind("submit", function(){
+ 			
+ 			$.ajax({url:"insertCafe",async:false, success:function(data) {
+ 						alert("insertcafe등록 후  데이터~~:"+data);
+ 						cafe_no = Number(data);
+ 						
+ 					}});
+ 					
+ 					alert("밖에서~~:"+cafe_no);
+ 					
+ 					$.ajax({url:"insert_cafe_chkbox",data:{"cafe_no":cafe_no}, success:function() {
+ 						alert("카페 체박 성공후 ");				
+ 					$.ajax({url:"insert_cafe_img",data:{"cafe_no":cafe_no}, success:function() {
+ 						alert("카페 이미지 성공후");				
+ 					}}});
+ 					
+ 					
+ 					$.ajax({url:"insert_pass",data:{"cafe_no":cafe_no}, success:function() {
+ 						alert("이용권 성공!");				
+ 					}});
+ 				$.ajax({url:"insert_room",data:{"cafe_no":cafe_no}, async:false, success:function(data) {
+ 					room_no = Number(data);
+ 					alert("룸 성공후 room_no: "+room_no);						
+ 					$.ajax({url:"insert_room_time",data:{"cafe_no":cafe_no, "room_no": room_no}, success:function() {
+ 						alert("룸타임 성공!");				
+ 					}});
+ 				}});
+ 				
+ 					
+ 					
+ 		});
+ 	
+		//$("#f1_submit").trigger('submit');	//사진 없로드를 위한 폼을 섭밋	---------추후 처리
+		
+//		$("#f2_submit").trigger('submit');	//룸 을 위한 폼을 섭밋	
+	//	$("#f3_submit").trigger('submit');	//이용권을 위한 폼을 섭밋
+		//$("#f4_submit").trigger('submit');	//취소 환불을 위한 폼을 섭밋
+			
+	/* 	
+		var val_1 = $("#c_name").val();
+		var val_2 = $("#c_info").val();
+		var val_3 = $("#c_addr").val();
+		var val_4 = $("#c_phone").val();
+		var val_5 = $("#c_time").val();
+		var val_6 = $("#c_seat").val();
+		var val_7 = $("#pass_name").val();
+		var val_8 = $("#pass_price").val();
+		var val_9 = $("#r_name").val();
+		var val_10 = $("#room_time_start").val();
+		var val_11 = $("#room_time_end").val();
+		var val_12 = $("#room_price").val();
+		var val_13 = $("#ta_1").val();
+		var val_14 = $("#ta_2").val();
+		
+		$("#c_nameR").val(val_1);
+  		$("#c_infoR").val(val_2);
+  		$("#c_addrR").val(val_3);
+  		$("#c_phoneR").val(val_4);
+  		$("#c_timeR").val(val_5);
+  		$("#c_seatR").val(val_6);
+  		$("#pass_nameR").val(val_7);
+  		$("#pass_priceR").val(val_8);
+  		$("#room_nameR").val(val_9);
+  		$("#room_time_startR").val(val_10);
+  		$("#room_time_endR").val(val_11);
+  		$("#room_priceR").val(val_12);
+  		$("#ta_1R").val(val_13);
+  		$("#ta_2R").val(val_14);
+		
+		 */
+	
+  		
+/* 		$("#real").trigger('click'); */
+	
+/* 	$.ajax({url:"insertCafe",async:false, success:function(data) {
+				alert("insertcafe등록 후  데이터~~:"+data);
+				cafe_no = Number(data);
+				
+			}});
+			
+			alert("밖에서~~:"+cafe_no);
+			
+			$.ajax({url:"insert_cafe_chkbox",data:{"cafe_no":cafe_no}, success:function() {
+				alert("카페 체박 성공후 ");				
+			$.ajax({url:"insert_cafe_img",data:{"cafe_no":cafe_no}, success:function() {
+				alert("카페 이미지 성공후");				
+			}});	 */			
+//-------------------------------------------------------------------------------------------------------
+/* 		$("#real").trigger('submit'); - 가상폼이 굳이 필요없다면?!
+		
+		
+		$("#real").bind("submit", function() {
+			alert("real submit 동작");		
+			$.ajax({url:"insertCafe",async:false, success:function(data) {
+				alert("insertcafe등록 후  데이터~~:"+data);
+				cafe_no = Number(data);
+				
+			}});
+			
+			alert("밖에서~~:"+cafe_no);
+			
+			$.ajax({url:"insert_cafe_chkbox",data:{"cafe_no":cafe_no}, success:function() {
+				alert("카페 체박 성공후 ");				
+			$.ajax({url:"insert_cafe_img",data:{"cafe_no":cafe_no}, success:function() {
+				alert("카페 이미지 성공후");				
+			}});				
+		}}); 	 */
+//-------------------------------------------------------------------------------------------------------			
+			
+/* 			$.ajax({url:"insert_pass",data:{"cafe_no":cafe_no}, success:function() {
+					alert("이용권 성공!");				
+				}});
+			$.ajax({url:"insert_room",data:{"cafe_no":cafe_no}, async:false, success:function(data) {
+				room_no = Number(data);
+				alert("룸 성공후 room_no: "+room_no);						
+				$.ajax({url:"insert_room_time",data:{"cafe_no":cafe_no, "room_no": room_no}, success:function() {
+					alert("룸타임 성공!");				
+				}});
+			}}); */
+			
+		});
+		
+	});
+	
+	
+});

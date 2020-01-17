@@ -1,0 +1,134 @@
+===========10/15============
+[ON]
+서버
+mongod --dbpath c:/myDB[디렉토리명]
+클라이언트
+mongo
+----------------------------
+[OFF]
+서버
+
+클라이언트
+use admin
+db.shutdownServer()
+quit()
+============================
+use [db명]
+----------------------------
+db.people[collection명].insertOne({user_id:'abc123',age:55,status:'A'})
+----------------------------
+db.people.find()
+----------------------------
+db.dept.insertMany([
+{dno:100,dname:'개발1부',dloc:'제주'},
+{dno:200,dname:'영업부',dloc:'서울'},
+{dno:300,dname:'관리부',dloc:'서울'},
+{dno:400,dname:'개발2부',dloc:'호주'}
+])
+----------------------------
+db.dept.find()
+----------------------------
+db.book.insertMany([
+{bookid:1,bookname:'축구의 역사',publisher:'굿스포츠',price:7000},
+{bookid:2,bookname:'축구 아는 여자',publisher:'나무수',price:13000},
+{bookid:3,bookname:'축구의 이해',publisher:'대한미디어',price:22000},
+{bookid:4,bookname:'골프바이블',publisher:'대한미디어',price:35000},
+{bookid:5,bookname:'피겨 교본',publisher:'굿스포츠',price:9000},
+])
+----------------------------
+db.book.find()
+----------------------------
+조건이 있는 검색
+db.book.find({},{bookname:1,price:1})
+----------------------------
+db.book.find({},{bookname:1,price:1, _id:0}) _id는 안볼래
+----------------------------
+위치가 서울인 부서의 부서번호와 부서명을 출력
+db.테이블명.find({where조건},{내가 보고싶은 조건})
+db.dept.find({dloc:'서울'},{dno:1,dname:1,_id:0})
+----------------------------
+위치가 서울이 아닌 부서의 부서번호와 부서명을 출력(*)
+db.dept.find({dloc:{$ne:'서울'}},{dno:1,dname:1,_id:0})
+----------------------------
+출판사가 대한미디어인 도서중에 가격이 20000원이상인 모든 도서의 도서명, 가격을 출력
+db.book.find({publisher:'대한미디어',price:{$gte:20000}},{bookname:1,price:1,_id:0})
+----------------------------
+부서번호가 100이거나 부서위치가 제주도인 부서의 부서번호와 부서명,부서위치를 출력
+db.dept.find($or:[{dno:100},{dloc:'제주'}]) ,{_id:0}
+----------------------------
+도서명이 축구로 시작하는 도서중에 가격이 10000원이상인 도서의 도서명, 가격, 출판사를 출력
+db.book.find({{bookname:/^축구/,price:{$gte:10000}}{bookname:1,price:1,publisher:1,_id:0})
+----------------------------
+도서명이 축구로 시작하는 모든 도서의 수를 출력하세요
+db.book.find({bookname:/^축구/}).count()
+-----------------------------
+모든 출판사의 목록을 출력
+(단, 중복이 될때 한번만 출력)
+db.book.find([$group:{_id:'publisher'}])
+-----------------------------
+도서번호 1번의 도서가격을 10000원으로 수정
+db.book.updateMany({bookid:1},{$set:{price:10000}})
+-----------------------------
+대한미디어의 도서의 가격을 10% 인상
+db.book.updateMany({publisher:'대한미디어'},{$inc:{price:price*10}})
+-----------------------------
+도서번호 1번의 도서를 삭제
+db.book.deleteMany({bookid:1})
+-----------------------------
+db.book.find({bookname:/^축구/},{bookname:1,price:1,publisher:1,_id:0})
+----------------------------
+도서명이 축구로 시작하는 모든 도서의 도서명, 출판사, 가격을 출력
+(단, 가격이 높은순으로 출력)
+
+===========10/16============
+(***)_id: default값이 출력임 - 안보고싶으면 꼭 0해줘~
+----------------------------
+db.dept.insertOne({dno:500,dname:'기획팀',dloc:'서울'})
+유연한 스키마 - 형식에 없는 도큐먼트의 자유로운 추가, 삭제 가능
+db.dept.insertOne({dno:600,dname:'개발3팀'})
+db.dept.insertOne({dno:600,dname:'개발4팀',dloc:'김포',tel:'031-1234-5678'})
+
+----------------------------
+db.student.insertMany([
+{name:'프로도',kor:100,eng:80,math:90},
+{name:'어피치',kor:50,eng:60,math:70},
+{name:'무지',kor:90,eng:100,math:60},
+{name:'튜브',kor:80,eng:90,math:80},
+{name:'콘',kor:90,eng:80,math:100},
+])
+----------------------------
+모든 학생의 이름과, 국어점수만 검색
+(_id를 검색하지 않음)
+db.student.find({},{_id:0,name:1,kor:1})
+----------------------------
+국어점수와 영어점수가 모두 80점 이상인 학생들의 이름, 국어, 영어 출력
+(단, 이름순으로 출력) : find().sort({컬럼명:[1/-1]}) [1]:오름차순/[-1]:내림차순
+
+db.student.find(
+{kor:{$gte:80},eng:{$gte:80}},
+{name:1,kor:1,eng:1,_id:0}
+).sort({name:1})
+----------------------------
+수학점수가 80점 이상인 학생의 수 출력
+db.student.find({math:{$gte:80}}).count()
+----------------------------
+<!-- 몽고디비 메이븐 의존관계설정 - tutorials 참고 -->
+		<dependency>
+			<groupId>org.mongodb</groupId>
+			<artifactId>mongodb-driver-sync</artifactId>
+			<version>3.11.1</version>
+		</dependency>
+----------------------------
+몽고디비 - tutorials 참고
+	Perform Read Operations
+	Perform Write Operations
+----------------------------
+1016몽고디비 실험 다시공부하기
+
+===========10/17============
+학생의 이름을 매개변수로 전달받아
+그 학생의 국어, 영어, 수학점수를 출력하는 웹어플리케이션을 만들기
+----------------------------
+
+===========10/21============
+db.stddent.find({"name":"콘"},{"_id":0})

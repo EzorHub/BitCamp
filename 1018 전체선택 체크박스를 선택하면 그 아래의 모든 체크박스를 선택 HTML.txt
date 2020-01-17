@@ -1,0 +1,14 @@
+전체선택 체크박스를 선택하면 그 아래의 모든 체크박스를 선택 HTML
+1
+2
+3
+4
+5
+<label><input type="checkbox" id="check_all" class="input_check"> <b>전체선택</b></label>
+<ul class="select_subject">
+<label><input type="checkbox" class="input_check" name="class[1]" value="1"> <b>1</b></label>
+<label><input type="checkbox" class="input_check" name="class[2]" value="2"> <b>2</b></label>
+</ul>
+
+
+출처: https://hermeslog.tistory.com/327 [헤르메스 LIFE]

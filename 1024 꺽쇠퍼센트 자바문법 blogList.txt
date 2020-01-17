@@ -1,0 +1,24 @@
+<%
+            String id = request.getParameter("id");
+            try{
+                Mongo mongo = new Mongo();
+                DB db = mongo.getDB("bit");
+                DBCollection collection = db.getCollection("articles");
+                BasicDBObject ob = new BasicDBObject();
+                ob.append("_id", new ObjectID(id));
+                DBObject obj = collection.findOne(ob);
+
+                String title = (String)obj.get("title");
+                String content = (String)obj.get("content");
+                String id = ((ObjectID)obj.get("_id")).toString();
+                if(content.length() >= 20){
+                    content = content.substring(0,20);
+                }
+                %>
+                <h2><%= title %></h2>
+                <p><%= content %></p>
+                <%
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+            %>

@@ -1,0 +1,36 @@
+백업테이블 생성 - 기존 테이블 삭제(이때 제약조건/혹은 pk삭제를 해줘야함)
+ - 백업테이블 이름을 기존테이블명으로 변경 
+
+create table qa_backup as
+select qa_no,qa_title,qa_content,qa_write_date,b_ref,b_level,b_step,cust_no,
+man_no
+from qa;
+--------------------------------------------
+alter table get_pass drop primary key cascade; 
+--------------------------------------------
+drop table qa;
+rename qa_backup to qa;
+------------------------------------------------
+PK제약조건 설정
+alter table customer add primary key (cust_no);
+------------------------------------------------
+
+
+---------------------------------------------------------------1023 테이블 수정
+get_pass
+room_reser
+payment
+
+
+alter table restaurant drop primary key cascade; 
+alter table room_reser drop primary key cascade; 
+alter table payment drop primary key cascade; 
+----------------------------------------------------
+drop table restaurant;
+drop table room_reser;
+drop table payment;
+----------------------------------------------------
+
+
+
+

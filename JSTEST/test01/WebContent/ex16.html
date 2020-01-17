@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JS ForEach - ex15(선생님꺼)</title>
+
+<script type="text/javascript">
+	
+	var arr = [ {
+		no : 1,
+		name : "떡볶이",
+		price : 3000,
+		qty : 1,
+		fname : "tbbk.jpg"
+	}, {
+		no : 2,
+		name : "오뎅",
+		price : 2500,
+		qty : 1,
+		fname : "od.jpg"
+	}, {
+		no : 3,
+		name : "순대",
+		price : 3000,
+		qty : 1,
+		fname : "sd.jpg"
+	}, {
+		no : 4,
+		name : "와인",
+		price : 50000,
+		qty : 1,
+		fname : "wine2.jpg"
+	}, ];
+	window.onload = function() {
+		var result = document.getElementById("result");
+		document.getElementById("btn").onclick = function() {
+				/*item(a) 배열요소- 객체1 index(i) 배열의 인덱스 - 1번째*/
+			
+			arr.forEach( function (a, i) {
+				
+				var tr = document.createElement("tr");
+				
+				var td1 = document.createElement("td");
+				var td2 = document.createElement("td");
+				var td3 = document.createElement("td");
+				var td4 = document.createElement("td");
+				var td5 = document.createElement("td");
+				
+				var tx1 = document.createTextNode(a.no);
+				var tx2 = document.createTextNode(a.name);
+				var tx3 = document.createTextNode(a.price);
+				var tx4 = document.createTextNode(a.qty);
+				var tx5 = document.createTextNode(a.fname);
+				
+				var img = document.createElement("img");
+				img.src = a.fname;
+				img.width = "100";
+				img.height = "100";
+				
+				td1.appendChild(tx1);
+				td2.appendChild(tx2);
+				td3.appendChild(tx3);
+				td4.appendChild(tx4);
+				td5.appendChild(img); /*미래의 노드 만드..*/
+				
+				tr.appendChild(td1);
+				tr.appendChild(td2);
+				tr.appendChild(td3);
+				tr.appendChild(td4);
+				tr.appendChild(td5);
+				
+				result.appendChild(tr);
+				
+				
+			} );
+			
+
+			
+		}
+
+	}
+</script>
+</head>
+<body>
+
+	<h1>상품목록</h1>
+	<hr>
+	<table id="result">
+	<tr>
+	<td>상품번호</td>	
+	<td>상품명</td>	
+	<td>가격</td>	
+	<td>수량</td>	
+	<td>사진</td>	
+	</tr>
+	</table>
+	
+	<button id="btn">출력</button>
+</body>
+</html>

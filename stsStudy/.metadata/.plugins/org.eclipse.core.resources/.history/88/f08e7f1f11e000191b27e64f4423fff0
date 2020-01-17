@@ -1,0 +1,11 @@
+package com.BOB.vo;
+
+public class PassVo {
+
+	private int pass_no;
+	private String pass_content;
+	private int price;
+	private int cafe_no;
+	
+	
+}

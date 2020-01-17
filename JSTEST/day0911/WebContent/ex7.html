@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>pdf79 함수생성실험 -제이쿼리</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+	var pro = function (a, b) {
+		/*result1로 반환됨*/
+		var r = a + b;
+		return "<h2>더하기결과: "+r+"</h2>";
+	}
+	function hello(name) {
+		/*result2로 반환됨*/
+		return "<h2>안녕, "+name+"</h2>";		
+	}
+	
+	$(function () {
+		var r1 = pro(2,3);
+		var r2 = hello('스녕');
+		
+		$("#result1").html(r1);
+		$("#result2").text(r2);
+	});
+		
+	
+</script>
+</head>
+<body>
+	<div id="result1"></div>
+	<div id="result2"></div>
+</body>
+</html>

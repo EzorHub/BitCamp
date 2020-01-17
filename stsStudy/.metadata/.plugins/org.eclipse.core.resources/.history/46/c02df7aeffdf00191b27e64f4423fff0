@@ -1,0 +1,7 @@
+package com.chat.vo;
+
+public class JumunDetailVo {
+	private int no;
+	private int jumun_no;
+	private int goods_no;
+}

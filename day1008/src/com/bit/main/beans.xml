@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<aop:aspectj-autoproxy/>
+	<!-- <aop:config>
+		<aop:aspect ref="profilingAdvice" id="aspect1">
+			<aop:pointcut expression="execution(pulbic * com.bit.dao..*(..))"
+				id="profileTarget" />
+			<aop:around method="pro" pointcut-ref="profileTarget"/>
+		</aop:aspect>
+	</aop:config> -->
+
+
+	<bean class="com.bit.dao.BoardDao" id="boardDao" />
+	<bean class="com.bit.dao.MemberDao" id="memberDao" />
+	<bean class="com.bit.util.HelloUtil" id="helloUtil" />
+	<bean class="com.bit.advice.ProfilingAspect" id="profilingAdvice" />
+	
+</beans>

@@ -1,0 +1,20 @@
+package com.BOB.vo;
+
+public class CafeVo {
+
+	private int cafe_no;
+	private String license_num;
+	private String main_img;
+	private String main_img;
+	private String main_img;
+	private String main_img;
+	private String main_img;
+	private String main_img;
+	private String main_img;
+	private String main_img;
+	private String main_img;
+	private int seats;
+	private int provider_no;
+	
+	
+}

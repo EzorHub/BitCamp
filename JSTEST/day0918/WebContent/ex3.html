@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+div {
+	width: 100px;
+	height: 100px;
+	border: 1px solid orange;
+	background-color: orange;
+	text-align: center;	
+	vertical-align:middle;
+	font-weight: bold;
+	font-size: 13.5pt;
+	color: green;
+	margin: 2px;
+	position: relative;
+}
+</style>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-1.6.1.min.js">
+	
+</script>
+<script type="text/javascript">
+	$(function() {
+	$("button").click(function () {
+	
+		//-----------------------------------
+		var html = $(this).html();
+		var evalText = "$('div')."+html;
+		//-----------------------------------
+		eval(evalText);
+		
+	
+	});
+	
+		
+		
+			$("div").animate({
+				left:'500'
+			},2000). animate({ <!-- '.'주의! 컴마아님 -->
+				left:'0'
+			}, 'slow');
+			
+		
+	});
+</script>
+</head>
+<body>
+	<button>stop()</button>
+	<button>stop(true)</button>
+	<button>stop(false,true)</button>
+	<button>stop(true,true)</button><br>
+	<div>
+		<br><br>A
+	</div>
+	
+	
+</body>
+</html>

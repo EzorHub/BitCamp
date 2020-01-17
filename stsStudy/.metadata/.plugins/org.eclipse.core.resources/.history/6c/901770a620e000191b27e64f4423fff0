@@ -1,0 +1,37 @@
+package com.chat.dao;
+
+import java.util.HashMap;
+import java.util.List;
+
+import org.springframework.stereotype.Repository;
+
+import com.chat.db.DBManager;
+import com.chat.vo.GoodsVo;
+
+@Repository
+public class GoodsDao {
+	
+	public List<GoodsVo> listPage(HashMap map){
+		System.out.println("2");
+		return DBManager.listPage(map);
+	}
+	
+	public List<GoodsVo> listGoods(){
+		return DBManager.listGoods();
+	}
+	
+	public int goodsCount() {
+		return DBManager.goodsCount();
+	}
+
+	//----------------2019/09/25---------------------
+	public List<GoodsVo> goodsInfo() {
+		// TODO Auto-generated method stub
+		return DBManager.goodsInfo();
+	}
+	//----------------2019/09/26---------------------
+	public int insertJumun(Jumun jumun)
+    {
+        return DBManager.insertJumun(jumun);
+    }
+}

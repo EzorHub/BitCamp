@@ -1,0 +1,77 @@
+package com.bookstore.db;
+
+import java.io.Reader;
+import java.util.HashMap;
+import java.util.List;
+
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+
+import com.bookstore.vo.BookVo;
+
+
+public class DBManager {
+	
+	private static SqlSessionFactory factory;
+	static {
+		try {
+			Reader reader
+			= Resources.getResourceAsReader("com/bookstore/db/dbConfig.xml");
+			factory = new SqlSessionFactoryBuilder().build(reader);
+			reader.close();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}		
+	}
+	
+	public static List<BookVo> listAll(int start, int end){
+		HashMap map = new HashMap();
+		map.put("start",start);
+		map.put("end",end);
+		
+		
+		SqlSession session = factory.openSession();
+		List<BookVo> list = session.selectList("book.listAll", map);
+		session.close();
+		return list;
+	}
+	
+	public static int insertBook(BookVo b) {
+		int re = 0;
+		SqlSession session = factory.openSession(true);
+		re=session.insert("book.insert",b);
+		return re;
+	}
+	public static int updateBook(BookVo b) {
+		int re = 0;
+		SqlSession session = factory.openSession(true);
+		re = session.update("book.update",b);		                                           
+		return re;
+	}
+	public static int deleteBook(BookVo b) {
+		int re = 0;
+		SqlSession session = factory.openSession(true);
+		re = session.delete("book.delete",b);		                                           
+		return re;
+	}
+	
+	
+	public static List<BookVo> listPage(HashMap map){
+		List<BookVo> list = null;
+		
+		SqlSession session = factory.openSession();	
+		list = session.selectList("book.listPage", map);
+		return list;
+	}
+	
+	
+	public static int bookCount() {
+		int cnt = 0;
+		SqlSession session = factory.openSession();
+		cnt = session.selectOne("book.count");
+		session.close();
+		return cnt;
+	}
+}

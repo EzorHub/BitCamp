@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- 제이쿼리 라이브러리 -->
+<link style="stylesheet" href="jquery-ui-1.12.1/jquery-ui.css">
+<style type="text/css">
+	*{
+		margin: 0px; padding: 0px;
+	}
+	.inner_box{
+		background-color: orange;
+		width: 100px;height: 100px;
+		position: absolute;
+	}
+	#canvas{
+		background: grey;
+		width: 600; height: 400px;
+	}
+</style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="jquery-ui-1.12.1/jquery-ui.js"></script>
+<script type="text/javascript">
+$(function () {
+	$(".inner_box").each(function (idx) {
+		$(this).css({
+			left: idx*90,
+			top: idx*90
+		});
+	});
+});
+
+</script>
+</head>
+<body>
+<h1>Test Header</h1>
+<div id="canvas">
+<div class="inner_box"></div>
+<div class="inner_box"></div>
+<div class="inner_box"></div>
+<div class="inner_box"></div>
+<div class="inner_box"></div>
+</div>
+<h1>Test Header</h1>
+</body>
+</html>

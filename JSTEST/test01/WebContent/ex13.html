@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	window.onload = function() {
+		var goods = document.getElementById("goods");
+		
+		document.getElementById("btn1").onclick= function () {
+			goods.src = "tbbk.jpg";
+		}
+		document.getElementById("btn2").onclick= function () {
+			goods.src = "od.jpg";
+		}
+		document.getElementById("btn3").onclick= function () {
+			goods.src = "sd.jpg";
+		}
+		
+	}
+
+</script>
+</head>
+<body>
+<h2>원하는 상품을 선택하세요</h2>
+<img id="goods" src="jh.jpg" width="50%"><br>
+
+<button id="btn1">떡볶이</button><br>
+<button id="btn2">오뎅</button><br>
+<button id="btn3">순대</button><br>
+
+</body>
+</html>

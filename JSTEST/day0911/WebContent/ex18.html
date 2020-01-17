@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="student.js">
+</script>
+<script type="text/javascript">
+	var list = [];
+	//pdf 128p
+	list.push(new Student('스녕', 100, 99, 100, 100));
+	list.push(new Student('무지', 85, 99, 60, 30));
+	list.push(new Student('어피치', 77, 85, 91, 5));
+	list.push(new Student('튜브', 89, 99, 85, 100));
+	list.push(new Student('콘', 91, 99, 88, 85));
+	
+	var output ="이름\t총점\t평균\n-------------------------------\n";
+	for(var i in list){ //in은 index를 꺼내옴
+		
+		output += list[i].toString()+"\n";	
+	}
+		alert(output);
+		
+</script>
+</head>
+<body>
+
+</body>
+</html>

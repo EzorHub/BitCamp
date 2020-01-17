@@ -1,0 +1,35 @@
+insert into goods values(31,'林翅1',10000,1,'jh.jpg');
+insert into goods values(32,'林翅1',10000,1,'jh.jpg');
+insert into goods values(32,'林翅1',10000,1,'jh.jpg');
+insert into goods values(33,'林翅1',10000,1,'jh.jpg');
+insert into goods values(34,'林翅1',10000,1,'jh.jpg');
+insert into goods values(35,'林翅1',10000,1,'jh.jpg');
+insert into goods values(36,'林翅1',10000,1,'jh.jpg');
+insert into goods values(37,'林翅1',10000,1,'jh.jpg');
+insert into goods values(38,'林翅1',10000,1,'jh.jpg');
+insert into goods values(39,'林翅1',10000,1,'jh.jpg');
+insert into goods values(40,'林翅1',10000,1,'jh.jpg');
+insert into goods values(41,'林翅1',10000,1,'jh.jpg');
+insert into goods values(42,'林翅1',10000,1,'jh.jpg');
+insert into goods values(43,'林翅1',10000,1,'jh.jpg');
+insert into goods values(44,'林翅1',10000,1,'jh.jpg');
+insert into goods values(45,'林翅1',10000,1,'jh.jpg');
+insert into goods values(46,'林翅1',10000,1,'jh.jpg');
+insert into goods values(47,'林翅1',10000,1,'jh.jpg');
+insert into goods values(48,'林翅1',10000,1,'jh.jpg');
+insert into goods values(49,'林翅1',10000,1,'jh.jpg');
+insert into goods values(50,'林翅1',10000,1,'jh.jpg');
+insert into goods values(51,'林翅1',10000,1,'jh.jpg');
+insert into goods values(52,'林翅1',10000,1,'jh.jpg');
+insert into goods values(53,'林翅1',10000,1,'jh.jpg');
+insert into goods values(54,'林翅1',10000,1,'jh.jpg');
+insert into goods values(55,'林翅1',10000,1,'jh.jpg');
+insert into goods values(56,'林翅1',10000,1,'jh.jpg');
+insert into goods values(57,'林翅1',10000,1,'jh.jpg');
+insert into goods values(58,'林翅1',10000,1,'jh.jpg');
+insert into goods values(59,'林翅1',10000,1,'jh.jpg');
+insert into goods values(60,'林翅1',10000,1,'jh.jpg');
+
+
+
+

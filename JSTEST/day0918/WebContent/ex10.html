@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- 제이쿼리 라이브러리 -->
+<link style="stylesheet" href="jquery-ui-1.12.1/jquery-ui.css">
+<style type="text/css"> /*css 설정하는 곳*/
+	*{
+		margin: 0px; padding: 0px;
+	}
+	.animation_canvas{
+		/* overflow: hidden;  */
+		overflow: hidden; 
+		position: relative;
+		width: 600px; height: 400px;
+	}
+	.slider_panel{
+		width: 3000px; position: relative;
+	}
+	.slider_img{
+		float: left; width: 600px; height: 400px;
+	}
+	
+	.slider_text_panel{
+		position: absolute; top: 200px; left: 50px;
+	}
+	.slider_text{
+		position: absolute; width: 250px; height: 150px;
+	}
+	.control_panel{
+		position: absolute; top: 380px;
+		left: 270px; /* height: 13px; */
+		height: 13px;
+		overflow: hidden; 
+	}
+	.control_button{
+		width: 12px; height: 46px;
+		position: relative;
+		
+		float: left; cursor: pointer;
+		background: url('controll_button.png');
+	}
+	.control_button:hover {top: -16px;}
+	.control_button:active {top: -31px;}
+	
+</style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="jquery-ui-1.12.1/jquery-ui.js"></script>
+<script type="text/javascript">
+$(function () {
+	//슬라이더를 움직여주는 함수
+	function moveSlider(idx) {
+		//슬라이더 이동
+		
+		//---------------------------------------------------------
+		//그림보여줌
+		var willMoveLeft = -(idx*600);
+		//슬라이더 왼쪽좌표를 계산해줌(그림하나당 크기가 600이니까)
+		$(".slider_panel").animate({left: willMoveLeft}, 'slow');
+		//---------------------------------------------------------
+		
+		//글자이동
+		//같은거 보여줘
+		$(".slider_text[data-idx="+idx+"]").show().animate({
+			left:0
+		},'slow');
+		//다르면 숨겨서 다른곳으로 넣어놔
+		$(".slider_text[data-idx!="+idx+"]").hide('slow', function () {
+			$(this).css('left', -300)
+		});		
+		
+		
+		//active 클래스를 부여/제거함 - 지금 내가 몇번째 사진을 보고있는지 
+		$(".slider_text[data-idx="+idx+"]").addClass('active');
+		$(".slider_text[data-idx!="+idx+"]").removeClass('active');
+	}
+	
+	
+	
+	
+	/*버튼마다 인덱스 통일되게 하려고?*/
+	$(".slider_text").css("left", -300).each(function(idx){
+		$(this).attr("data-idx", idx);
+	});
+	$(".control_button").each(function (idx) {
+		$(this).attr("data-idx", idx);
+	}).click(function () {
+		var idx = $(this).attr("data-idx");
+		moveSlider(idx);
+	});
+	
+	/*초기 슬라이더 위치 지정 - 맨처음에 어떤걸 보여줄까*/
+	var randomNumber = Math.round(Math.random()*4);
+	moveSlider(randomNumber);
+	
+});
+
+</script>
+</head>
+<body>
+<h1>Test Header</h1>
+<div class="animation_canvas">
+
+
+
+	<div class="slider_panel">
+		<img class="slider_img" src="img/summer.jpg">
+		<img class="slider_img" src="img/spring.jpg">
+		
+		<img class="slider_img" src="img/autumn.jpg">
+		<img class="slider_img" src="img/winter.jpg">
+		
+		<img class="slider_img" src="img/luna.jpg">
+	</div>
+	
+	<div class="slider_text_panel">
+		
+		<div class="slider_text">
+			<h1>여름</h1>
+			<p>여름입니다.</p>
+		</div>
+		
+		<div class="slider_text">
+			<h1>봄</h1>
+			<p>봄입니다.</p>
+		</div>
+		
+		
+		
+		<div class="slider_text">
+			<h1>가을</h1>
+			<p>가을입니다.</p>
+		</div>
+		
+		<div class="slider_text">
+			<h1>겨울</h1>
+			<p>겨울입니다.</p>
+		</div>
+		
+	
+		<div class="slider_text">
+			<h1>달</h1>
+			<p>달입니다.</p>
+		</div>
+		
+	</div>
+	
+	
+	<div class="control_panel">
+		<div class="control_button"></div>
+		<div class="control_button"></div>
+		<div class="control_button"></div>
+		<div class="control_button"></div>
+		<div class="control_button"></div>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+<h1>Test Header</h1>
+</body>
+</html>

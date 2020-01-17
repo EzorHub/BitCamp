@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	window.onload = function() {
+		document.getElementById("btn").onclick = function() {
+			var tube = document.getElementById("tube");
+			tube.style.color = "green";
+			tube.style.border = "2px solid black";
+			tube.style.fontFamily = "hack";
+			
+		}
+	}
+</script>
+</head>
+<body>
+
+	<h1 id="tube">TUBE-style</h1>	
+	
+	<button id="btn">스타일변경</button>
+</body>
+</html>

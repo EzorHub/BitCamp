@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>배열로 출력</title>
+</head>
+<script type="text/javascript">
+	window.onload= function() {
+		document.getElementById("btn").onclick= function () {
+			/*배열을 이용한 것으로 수정*/
+			var str="";
+			var menu = ["우동", "김치나베", "김치수제비", "김치찌개"];
+			str += "<ul>";			
+			for(var i= 0;i<menu.length;i++){				
+				str += "<li>"+menu[i]+"</li>";					
+			}			
+			str += "</ul>";
+			
+			document.getElementById("result").innerHTML = str;
+		}
+	}
+</script>
+<body>
+<h2>스녕이가 추천하는 점심메뉴</h2>
+<hr>
+
+<div id="result"></div>
+<button id="btn" >출력</button><!-- btn누르면 동적노드생성-메뉴 출력되도록 -->
+
+</body>
+</html>

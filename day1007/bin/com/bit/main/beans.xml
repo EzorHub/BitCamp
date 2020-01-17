@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<bean id="boardDao" class="com.bit.dao.BoardDao" />
+	<bean id="memberDao" class="com.bit.dao.MemberDao" />
+	<bean id="helloUtil" class="com.bit.util.HelloUtil" />
+	
+	<!-- advice객체생성 -->
+	<bean id="profilingAdvice" class="com.bit.advice.ProfilingAdvice" />
+	<aop:config>
+		<aop:aspect id="aspect1" ref="profilingAdvice">
+			<aop:pointcut expression="execution(public * com.bit.dao ..*(..))"
+			 id="daoPointCut" />
+			 <aop:after-throwing pointcut-ref="daoPointCut" method="afterThrowing"/>
+			<!-- <aop:before pointcut-ref="daoPointCut" method="before"/> -->
+			<aop:around pointcut-ref="daoPointCut" method="pro"/>
+		</aop:aspect>
+	</aop:config>
+
+</beans>

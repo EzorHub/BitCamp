@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+.high_light{
+	background: green;
+	
+}
+</style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.6.1.min.js"></script>
+<script type="text/javascript">
+$(function () {
+	$("h1").toggle(function(){ //제이쿼리 버전을 1.6.1로 낮춤 3.4.1이 원래버전
+		//$(this).addClass("high_light");
+		$(this).html("하이하이");
+	},function(){
+		$(this).removeClass("high_light");
+		$(this).html("안녕안녕");
+	}, function () {
+		$(this).html("안녀어어어엉");
+	});
+	
+});
+
+</script>
+</head>
+<body>
+<h1>둘리</h1>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-3.4.1.min.js
+"></script>
+<script type="text/javascript">
+
+	$(function () {
+		var content = [
+			{
+				no:1,
+				name:"오뎅",
+				price:2500,
+				qty:1,
+				fname:"od.jpg"},
+				"sd.jpg", "wine2.jpg"}];
+		var i = 0;
+		setInterval(function(){
+			$("#goods").attr(
+					
+					
+					"src", pic[i]);
+			i++;
+			if(i>= pic.length){
+				i = 0;
+			}			
+		}, 500);
+	
+	});
+	
+	
+</script>
+</head>
+<body>
+
+	<span id="goods"></span>
+</body>
+</html>

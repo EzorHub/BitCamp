@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	window.onload = function() {
+		document.getElementById("btn").onclick = function() {
+			/* var tube = document.getElementById("tube");
+			alert(tube); */
+			var arr = document.getElementsByTagName("h1");
+			alert(arr[0].innerHTML); //****노드가 하나여도 배열형태로 반환****
+		}
+	}
+</script>
+</head>
+<body>
+
+	<h1 id="tube">튜브</h1>	
+	
+	<button id="btn">노드확인</button>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>객체배열</title>
+
+<script type="text/javascript">
+	window.onload = function() {
+		document.getElementById("btn").onclick = function() {
+			var str = "";
+			var arr = [ {no: 1, name:"떡볶이", price:3000, qty:1, src:"tbbk.jpg"},
+			 {no: 2, name:"오뎅", price:2500, qty:1, src:"od.jpg"},
+			 {no: 3, name:"순대", price:3000, qty:1, src:"sd.jpg"},
+			 {no: 4, name:"와인", price:50000, qty:1, src:"wine2.jpg"},			 
+				 ];
+			str += "<table width = '100%'>";
+			str += "<tr>";
+			str += "<td>번호</td>";
+			str += "<td>상품명</td>";
+			str += "<td>가격</td>";
+			str += "<td>수량</td>";
+			str += "<td>사진</td>";
+			str += "</tr>";
+			
+			
+			for(var i = 0;i<arr.length;i++){
+				
+				var g = arr[i];
+				str += "<tr>";
+				str += "<td>"+g.no+"</td>";
+				str += "<td>"+g.name+"</td>";
+				str += "<td>"+g.price+"</td>";
+				str += "<td>"+g.qty+"</td>";
+				str += "<td><img width=100 height=100 src ="+g.src+"></td>";			
+				str += "</tr>";
+			}
+			str += "</table>";
+			
+			document.getElementById("result").innerHTML = str;
+		}
+		
+		
+	}
+</script>
+</head>
+<body>
+
+<h1>상품목록</h1>
+<hr>
+
+	<div id="result"></div>
+	<button id="btn">조회</button>
+</body>
+</html>

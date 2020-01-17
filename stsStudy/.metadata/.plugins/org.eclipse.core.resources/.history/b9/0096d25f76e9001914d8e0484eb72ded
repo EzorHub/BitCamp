@@ -1,0 +1,8 @@
+package com.bit.advice;
+
+import org.aspectj.lang.annotation.Aspect;
+
+@Aspect
+public class ProfilingAdvice {
+
+}

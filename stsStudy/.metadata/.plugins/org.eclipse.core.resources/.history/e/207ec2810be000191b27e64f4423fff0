@@ -1,0 +1,9 @@
+package com.BOB.vo;
+
+public class ManagerVo {
+
+	private int man_no;
+	private String id;
+	private String pwd;
+	
+}

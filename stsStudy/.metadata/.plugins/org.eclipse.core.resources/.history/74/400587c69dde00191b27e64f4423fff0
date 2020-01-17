@@ -1,0 +1,26 @@
+package com.chat.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+
+@Controller
+public class IndexController {
+	
+	
+	
+	@RequestMapping("/ex01")
+	public void ex() {
+		
+	}
+
+	@RequestMapping("/index.do")
+	public void index() {
+		
+	}
+	
+	
+	
+	
+	
+}

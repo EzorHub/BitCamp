@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="book">
+  <select id="listAll" resultType="bookvo">
+    select * from book order by bookid
+  </select>
+  <insert id="insert">
+  	insert into book values(#{bookid},#{bookname},#{publisher},#{price})
+  </insert>
+  <update id="update">
+  	update book set bookname=#{bookname}, publisher=#{publisher},price=#{price} where bookid=#{bookid}
+  </update>
+  <delete id="delete">
+  	delete book where bookid=#{bookid}
+  </delete>
+  
+  <select id="listPage" resultType="bookvo">
+     select bookid, bookname,publisher, price
+   from(
+   select rownum n, bookid, bookname,publisher, price
+   from (select * from book order by bookid desc)) a
+   where a.n between #{start} and #{end}
+  </select>
+  
+  <select id="getTotal" resultType="java.lang.Integer">
+     select count(*) from book
+  </select>
+</mapper>

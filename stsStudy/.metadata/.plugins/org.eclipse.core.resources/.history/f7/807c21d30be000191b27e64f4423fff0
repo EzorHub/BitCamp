@@ -1,0 +1,13 @@
+package com.BOB.vo;
+
+public class EVTVo {
+
+	private int evt_no;
+	private String evt_title;
+	private String evt_content;
+	private int discount;
+	private String evt_start;
+	private String evt_end;
+	private int man_no;
+	
+}

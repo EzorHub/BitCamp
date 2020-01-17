@@ -1,0 +1,15 @@
+package com.BOB.vo;
+
+import java.util.Date;
+
+public class SNSVo {
+
+	private int sns_no;
+	private String sns_content;
+	private int sns_like;
+	private String sns_write_date;
+	private int cust_no;
+	private int provider_no;
+	
+	
+}

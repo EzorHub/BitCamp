@@ -1,0 +1,5 @@
+package com.bookstore.vo;
+
+public class BookVo {
+
+}

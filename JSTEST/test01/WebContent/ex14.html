@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+
+window.onload = function () {
+	document.getElementById("btn").onclick= function () {
+		var today = new Date();
+		var season = "";
+		var month = Number(today.getMonth());
+		var hours = Number(today.getHours());
+		var str = "";
+		
+		if(hours >= 18){
+			fname.src = "luna.jpg";			
+		}else{
+			fname.src = "sun.jpg";
+		}
+		
+		switch (month) {
+		case 11:case 0:case 1:
+			seasons = "겨울";
+			img.src = "winter.jpg";
+			break;
+		case 2:case 3:case 4:
+			seasons = "봄";
+			img.src = "spring.jpg";
+			break;
+		case 5:case 6:case 7:
+			seasons = "여름";
+			img.src = "summer.jpg";
+			break;
+		case 8:case 9:case 10:
+			seasons = "가을";
+			img.src = "autumn.jpg";
+			break;
+		
+		}
+		
+		str += today.toLocaleString();
+		
+		document.getElementById("today").innerHTML = str;
+		document.getElementById("img").innerHTML = fname;
+		
+	}
+	
+}
+
+
+</script>
+
+</head>
+<body>
+<hr>
+<h2 id="today"></h2><br>
+<img id="img" src="jh.jpg" width="100" height="100">&nbsp;&nbsp;
+<img id="fname" src="jh.jpg" width="100" height="100">&nbsp;&nbsp;
+<hr>
+<button id="btn">확인</button>
+</body>
+</html>

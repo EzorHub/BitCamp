@@ -1,0 +1,40 @@
+package com.bookstore.dao;
+
+import java.util.HashMap;
+import java.util.List;
+
+import org.springframework.stereotype.Repository;
+
+import com.bookstore.db.DBManager;
+import com.bookstore.vo.BookVo;
+import com.chat.vo.GoodsVo;
+
+@Repository
+public class BookDao {
+	
+	
+	//-------------------------------------
+	
+	public List<GoodsVo> listPage(HashMap map){
+		System.out.println("2");
+		return DBManager.listPage(map);
+	}
+	
+	
+	//-------------------------------------
+	
+	
+	public List<BookVo> listAll(){
+		return DBManager.listAll();
+	}
+
+	public int insertBook(BookVo b) {
+		return DBManager.insertBook(b);
+	}
+	public int updateBook(BookVo b) {
+		return DBManager.updateBook(b);
+	}
+	public int deleteBook(BookVo b) {
+		return DBManager.deleteBook(b);
+	}
+}

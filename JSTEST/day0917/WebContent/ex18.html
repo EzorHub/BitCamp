@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+
+</style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.6.1.min.js"></script>
+<script type="text/javascript">
+$(function () {
+	
+	$("#all_check").change(function(){
+      if(this.checked){
+           $("#all_items").children().attr("checked", true);
+       }else{
+           $("#all_items").children().attr("checked", false);
+       }
+    });
+});
+
+</script>
+</head>
+<body>
+<h2>좋아하는 과일을 선택하세요</h2>
+    <input type="checkbox" id="all_check">
+    <label>모두선택</label>
+<div id="all_items">
+    <input type="checkbox">
+    <label>사과</label>
+    <input type="checkbox">
+    <label>오렌지</label>
+    <input type="checkbox">
+    <label>자몽</label>
+</div> 
+
+</body>
+</html>

@@ -1,0 +1,227 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+	integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
+	crossorigin="anonymous">
+<link rel="stylesheet" href="jqueryUI/themes/ui-lightness/jquery-ui.css">
+<title>제이쿼리 플러그인 연습_ex05_상품에 대한정보_dropbox_ex05참고</title>
+<style type="text/css">
+
+/*구성전 css설정*/
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+/************************************/
+#btnAdd {
+	position: fixed;
+	width: 100px;	
+	bottom: 250px; /*선생님은 250*/
+	right: 0px;
+}
+
+#lbtotal{
+	text-align: right; width : 100px;
+	position: fixed;
+	bottom: 400px;
+	right: 0px;
+	width: 100px;
+	color: #f05d30;
+	font-weight: bold;
+	font-size: 15px;
+}
+
+#total {
+	font-size: 15px;
+	color: #f05d30;
+	text-align: right;
+	width: 100px;
+	position: fixed;
+	bottom: 350px;
+	right: 0px;
+	font-weight: bold;
+}
+
+/************************************/
+p, p_img {
+	display: inline-block;
+}
+
+body {
+	font-size: 70%;
+	font-weight: bold;
+}
+
+.item {
+	margin: 3px;
+	padding: 5px;
+}
+
+.item>img {
+	width: 100px;
+	height: 100px;
+}
+
+#wrap {
+	overflow: hidden;
+}
+
+#wrap>div {
+	float: left;
+}
+
+#dock {
+	position: fixed;
+	min-height: 120px;
+	width: 100%;
+	bottom: 0px;
+	z-index: 1;
+}
+
+#dock>div {
+	float: right;
+}
+.qty{
+		width: 50px;
+	}
+</style>
+
+
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-3.4.1.min.js
+"></script>
+<script type="text/javascript" src="jqueryUI/jquery-ui.js"></script>
+<script type="text/javascript">
+	$(function() {
+
+		$("#btnAdd").click(function() {
+			var no_list = $("#dock").find(".no");	
+			var qty_list = $("#dock").find(".qty");
+						
+			var data = {"custid":"tiger",
+					"total":totalPrice
+					};
+			$.each(no_list,function(i,no){
+				var attr_no = "jumunList["+i+"].goods_no";
+				var attr_qty = "jumunList["+i+"].qty";
+				data[attr_no]= $(no).html() ;
+				data[attr_qty]= $(qty_list[i]).val() ;
+			});
+				
+			$.post("insertJumun",			
+				data,			
+				function(r){
+				  alert(r);
+				}
+			  );
+		});
+		/*
+		ajax통신을 수행하여 데이터베이스의 상품의
+		내용으로 요소를 생성하도록 코드를 수정
+		
+		 */
+
+		//-----------------------------
+		var arr;
+		var totalPrice = 0;
+
+		var calTotalPrice = function(){
+
+			/* 끌어다 놓을때, 빠질때, 변경될때*/
+			//------------------------------------------------
+			
+			//끌어다 놓을때
+			totalPrice= 0;
+			var prices = $("#dock").find(".price");
+			
+			$.each(prices, function(idx, pr){
+				totalPrice += eval(  $(pr).text() ) * eval($(qty_list)[idx].val());
+			});					
+			$("#total").html(totalPrice);
+
+			$("#dock").find(".qty").show();
+			//------------------------------------------------
+			//빠질때
+			totalPrice -= eval($(this).find(".price").html());
+			$("#total").html(totalPrice);
+			
+			//------------------------------------------------
+			//변경될때
+			//------------------------------------------------
+
+			
+			
+			}
+		//-----------------------------
+		
+
+		$.getJSON("goodsInfo", function(data) {
+			arr = data;
+			$.each(arr, function(idx, item) {
+
+				var div = $("<div class='ui-widget-content ui-corner-all item'></div>");
+				var img = $("<img/><br>").attr("src","img/"+item.fname);
+				var no = $("<p></p><br>").html(item.no).addClass("no");
+				var name = $("<p></p><br>").html(item.name);
+				var price = $("<p></p><br>").html(item.price).addClass("price");
+				var qty = $("<span></span><br>").html("재고수량:"+item.qty).css("width","100px");
+				var order_qty = $("<input min='1' type='number'/><br>").val(1).addClass("qty");
+				
+				$(div).append(img,no,name,price,qty,order_qty);			
+				$("#wrap").append(div);
+				$(order_qty).hide();
+
+			});
+
+			$("#wrap>div").draggable({
+				helper : 'clone',
+				zIndex : 100,
+				scroll : false
+			});
+
+			$("#dock").droppable({
+				accept:"#wrap > div",
+				drop:function(event,ui){
+					$(ui.draggable).fadeOut(function(){
+						$(this).appendTo("#dock").fadeIn();
+						calTotalPrice();						
+					});
+					
+				}
+			});
+			
+
+			$("body").droppable({
+				accept:"#dock > div",
+				drop:function(event,ui){
+					$(ui.draggable).fadeOut(function(){
+						$(this).appendTo("#wrap").fadeIn();
+						calTotalPrice();							
+					});				
+				}
+			});
+
+		});
+
+	});
+</script>
+</head>
+<body>
+	<div id="wrap"></div>
+	<div id="order">		
+	<div id="dock" class="ui-state-highlight">
+		<span id="lbtotal">총주문금액</span><span id="total">0원</span>	
+		<button id="btnAdd" class="btn btn-dark">order</button>
+	</div>
+	</div>
+</body>
+</html>

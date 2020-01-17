@@ -1,0 +1,23 @@
+package com.BOB.vo;
+
+public class CafeVo {
+
+	private int cafe_no;
+	private String license_num;
+	private String main_img;
+	private String cafe_name;
+	private String cafe_info;
+	private String cafe_loc;
+	private String cafe_phone;
+	private String cafe_hrs;
+	private String cafe_notice;
+	private String cafe_cp;
+	private String cafe_rp;
+	private int seats;
+	private int provider_no;
+	
+	
+	
+	
+	
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>배열과 객체비교</title>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-3.4.1.min.js
+"></script>
+<script type="text/javascript">
+$(function(){
+
+	var g =  {
+		no : 1,
+		name : "떡볶이",
+		price : 3000,
+		qty : 1,
+		fname : "tbbk.jpg"
+	}; //객체
+	
+	var arr = [1, '축구공', 3000, 1, 'tbbk.jpg']; //배열
+	/* $.each(arr, function (index, arr) {//배열
+		alert(arr);
+	});	 */	
+	$.each(g, function (index, data) { //객체
+		alert(index);
+	});		
+
+});
+</script>
+</head>
+<body>
+
+	<h1>상품목록</h1>
+	<hr>
+	<div id="result"></div>
+
+	<button id="btn">출력</button>
+</body>
+</html>

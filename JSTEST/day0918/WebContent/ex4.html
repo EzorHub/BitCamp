@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+img{
+
+	width: 100px;
+	height: 100px;
+	position: relative;
+}
+#all{
+
+padding: 100px;
+position: relative;
+}
+</style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.6.1.min.js"></script>
+<script type="text/javascript">
+	$(function () {
+		$("#all").mouseleave(function () {
+			$("img").stop(true);
+			$("img").animate({
+				width:"100",height:"100"
+			}, 'slow');
+		});
+		$("img").hover(function () {
+			$(this).animate({width:"+=50", height:"+=50"}, 'slow');
+			
+		}, function () {
+			$(this).animate({width:"-=50", height:"-=50"}, 'slow');
+			
+		});
+		
+	});
+</script>
+</head>
+<body>
+<div id="all">
+<img src="img/tbbk.jpg">
+<img src="img/od.jpg">
+<img src="img/sd.jpg">
+<img src="img/ud.jpg">
+</div>
+</body>
+</html>

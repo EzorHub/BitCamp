@@ -1,0 +1,35 @@
+package com.chat;
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
+
+import com.chat.dao.BitMemberDao;
+
+@Component
+public class BitMailComponent {
+	@Autowired
+	private BitMemberDao bitdao;
+
+	public void setBitdao(BitMemberDao bitdao) {
+		this.bitdao = bitdao;
+	}
+
+	@Autowired
+//	private MailSender javaMailSender;
+	private JavaMailSender javaMailSender;
+
+	// 의존관계설정
+	public void setJavaMailSender(JavaMailSender javaMailSender) {
+		this.javaMailSender = javaMailSender;
+	}
+	
+	
+	@Scheduled(cron="0 0,15,30,45 * 1-30 * ?\r\n")
+	public void sendMail() {
+		
+	}
+
+}

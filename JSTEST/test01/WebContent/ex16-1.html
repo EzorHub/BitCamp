@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>제이쿼리를 이용해서 만들어보기</title>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-3.4.1.min.js
+"></script>
+<script type="text/javascript">
+$(function(){
+	var result = $("#result");
+	var data = [ {
+		no : 1,
+		name : "떡볶이",
+		price : 3000,
+		qty : 1,
+		fname : "tbbk.jpg"
+	}, {
+		no : 2,
+		name : "오뎅",
+		price : 2500,
+		qty : 1,
+		fname : "od.jpg"
+	}, {
+		no : 3,
+		name : "순대",
+		price : 3000,
+		qty : 1,
+		fname : "sd.jpg"
+	}, {
+		no : 4,
+		name : "와인",
+		price : 50000,
+		qty : 1,
+		fname : "wine2.jpg"
+	}, ];
+	$("#btn").click(function(){
+		var table = $("<table width='100%'></table>");
+		
+		var tr = $("<tr></tr>");
+		
+		var td1 = $("<td></td>").html("번호");
+		var td2 = $("<td></td>").html("상품명");
+		var td3 = $("<td></td>").html("가격");
+		var td4 = $("<td></td>").html("수량");
+		var td5 = $("<td></td>").html("사진");
+		
+		tr.append(td1);
+		tr.append(td2);
+		tr.append(td3);
+		tr.append(td4);
+		tr.append(td5);
+		
+		table.append(tr);
+		
+		$.each(data,function(index, data) {
+			var trr = $("<tr></tr>");
+			var tdd1 = $("<td></td>").html(data.no);
+			var tdd2 = $("<td></td>").html(data.name);
+			var tdd3 = $("<td></td>").html(data.price);
+			var tdd4 = $("<td></td>").html(data.qty);
+			var tdd5 = $("<img src="+data.fname+" width='100' height='100'>")
+			trr.append(tdd1);
+			trr.append(tdd2);
+			trr.append(tdd3);
+			trr.append(tdd4);
+			trr.append(tdd5);
+			
+			table.append(trr);
+			result.append(table);
+		});
+	});
+});
+</script>
+</head>
+<body>
+
+	<h1>상품목록</h1>
+	<hr>
+	<div id="result"></div>
+
+	<button id="btn">출력</button>
+</body>
+</html>

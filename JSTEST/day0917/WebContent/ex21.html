@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>innerFade사용법</title>
+<link rel="stylesheet" href="css/font.css">
+<link rel="stylesheet" href="css/jq_fade.css">
+<link rel="stylesheet" href="css/reset.css">
+<style type="text/css">
+
+</style>
+
+<script type="text/javascript" src="js/jquery.js"></script> <!-- 순서먼저 -->
+<script type="text/javascript" src="js/jquery.innerfade.js"></script>
+<script type="text/javascript">
+	$(function () {
+		$("#list").innerfade({
+			animationtype:"slide",
+			speed:750,
+			timeout:2000,
+			type:"random",
+			containerheight:"1000"
+		
+		});
+	});
+
+</script>
+
+</head>
+<body>
+
+<ul id="list">
+<li><img src="img/tbbk.jpg"></li>
+<li><img src="img/od.jpg"></li>
+<li><img src="img/sd.jpg"></li>
+</ul>
+
+</body>
+</html>

@@ -1,0 +1,9 @@
+package com.BOB.vo;
+
+public class Room_TimeVo {
+
+	private int room_no;
+	private String room_name;
+	private int cafe_no;
+	
+}

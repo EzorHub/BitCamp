@@ -1,0 +1,5 @@
+package com.bitTest.controller;
+
+public class IndexController {
+
+}

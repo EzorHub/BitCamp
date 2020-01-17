@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-3.4.1.min.js
+"></script>
+<script type="text/javascript">
+	$(function() {
+		 
+		 
+		 $("#btnAdd").click(function(){
+			 var input = $("input[type=text]");
+			 var tr = $("<tr></tr>");
+			 var tot = 0;
+			 var cnt = 0;
+			 $.each(input, function(idx, item){
+				$(tr).append($("<td></td>").html( $(item).val()));
+				
+				if(!isNaN($(item).val())){
+					tot += eval($(item).val());
+					cnt++;
+				}
+			
+				
+			 });
+				$(tr).append( $("<td></td>").html(tot));
+				$(tr).append( $("<td></td>").html(tot/cnt));
+				$("#tb").append(tr);
+				var trs = $("tr");
+				var selTr;
+				
+				$(trs).mouseover(function(){
+				/* 	Console.log("selTr"+selTr);
+					Console.log("trs"+trs); */
+					if(this != selTr){
+						$(this).css("background", "green");
+					}
+				});
+				$(trs).mouseleave(function(){
+					if( this!= selTr){
+					$(this).css("background", "white");
+					}
+				});
+				$(trs).click(function(){	
+					selTr = this;
+					$(trs).css("background", "white")
+					$(this).css("background", "grey");
+					
+				});
+			
+			 
+		 });
+	});
+</script>
+</head>
+<body>
+	이름: <input type="text" id="name"><br>
+	국어: <input type="text" id="kor"><br>
+	영어: <input type="text" id="eng"><br>
+	수학: <input type="text" id="math"><br>
+	<input type="button" id="btnAdd" value="추가">
+	<input type="button" id="btnDel" value="수정">
+	<input type="button" id="btnUpdate" value="삭제">
+	<table id="tb" width="100%">
+	<tr>
+	<td>이름</td>
+	<td>국어</td>
+	<td>영어</td>
+	<td>수학</td>
+	<td>총점</td>
+	<td>평균</td>
+	</tr>
+	</table>
+	
+	
+	
+</body>
+</html>

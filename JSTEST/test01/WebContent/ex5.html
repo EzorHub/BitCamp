@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<script type="text/javascript">
+	window.onload= function() {
+		document.getElementById("btn").onclick= function () {
+			/*동적노드만들기-순서없는리스트*/
+			var str="";
+			str += "<ul>";
+			str += "<li>우동</li>";
+			str += "<li>규동</li>";
+			str += "<li>사케동</li>";
+			str += "<li>오니기리</li>";
+			str += "</ul>";
+			
+			document.getElementById("result").innerHTML = str;
+		}
+	}
+</script>
+<body>
+<h2>스녕이가 추천하는 점심메뉴</h2>
+<hr>
+
+<div id="result"></div>
+<button id="btn" >출력</button><!-- btn누르면 동적노드생성-메뉴 출력되도록 -->
+
+</body>
+</html>

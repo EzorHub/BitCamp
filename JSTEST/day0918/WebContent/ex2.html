@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+div {
+	width: 100px;
+	height: 100px;
+	border: 1px solid orange;
+	background-color: orange;
+	text-align: center;	
+	vertical-align:middle;
+	font-weight: bold;
+	font-size: 13.5pt;
+	color: green;
+	margin: 2px;
+	position: relative;
+}
+</style>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-1.6.1.min.js">
+	
+</script>
+<script type="text/javascript">
+	$(function() {
+
+		$("div").toggle(function () {
+			$("div").animate({left:"+=60"}, 'slow');
+			$("div").animate({width:"+=60"}, 'slow');
+			$("div").animate({height:"+=60"}, 'slow');
+			
+			setinterval(function () {
+				$("div").clearQueue();
+				$("div").hide();
+			}, 1000);
+		}, function () {
+			$("div").animate({left:"-=60"}, 'slow');
+			$("div").animate({width:"-=60"}, 'slow');
+			$("div").animate({height:"-=60"}, 'slow');
+			
+			setinterval(function () {
+				$("div").clearQueue();
+				$("div").show();
+			}, 1000);
+		});
+		
+		
+	
+		
+		setinterval(function () {
+			$("div").clearQueue();
+			$("div").hide();
+		}, 1000);
+	});
+</script>
+</head>
+<body>
+
+	<div id="div">
+		<br><br>A
+	</div>
+	
+	<div id="div">
+		<br><br>B
+	</div>
+	<div id="div">
+		<br><br>C
+	</div>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>카카오 xml</title>
+<style type="text/css">
+#title_name, #title_loc {
+	background-color: #3b5c31;
+	color: #ffffff;
+}
+</style>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+	integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script type="text/javascript"
+	src="http://dapi.kakao.com/v2/maps/sdk.js?appkey=c1bc9ebf025c6c9764f3796dcc91b8d4"></script>
+<script type="text/javascript">
+	$(function() {
+
+		
+		//---------------------------------- xml로 변경 - 데이터 하나하나를 row로 인식
+		/*전역변수*/
+		var url_park = "http://openapi.seoul.go.kr:8088/677a7875417a6f3038354578636865/xml/GetParkInfo/1/10/";
+		var tr, tr1, tr2;
+		var td1, td2, td3, td4, td5, td6;
+		var arr;
+		var idx;
+		$.ajax({
+			url : url_park,
+			success : function(data) {
+				//arr = data.GetParkInfo.row; 객체
+				//arr = $(data).find("row"); 
+				arr = $(data).find("row").attr("idx", idx); 
+				//xml식 노드 접근 -객체가 아니라 태그임 - row들의 집합 - 그 중에 다른 태그를 찾아서 그 txt를 갖고옴
+				//-----------------------------------
+			//	alert(arr.length);
+//				idx = $(arr).attr("idx", idx);
+	
+				//-----------------------------------
+				$.each(arr, function(idx, item) {
+					/* var p = $("<p></p>").html( $(this).find().text("PARKING_NAME")+", "+ $(this).find().text("ADDR") ).attr("idx", idx);
+					$("#list").append(p); */
+					 
+					tr = $("<tr></tr>").attr("idx", idx);
+					td1 = $("<td></td>").html($(this).find("PARKING_NAME").text());
+					td2 = $("<td></td>").html($(this).find("ADDR").text());
+
+					$(tr).append(td1, td2);
+					$("#parkTB").append(tr);
+
+
+					
+					$(tr).click(function() {
+						$(tr1).empty();				
+						
+						tr1 = $("<tr></tr>");						
+						td3 = $("<td></td>");						
+						var div = $("<div id='map' style='width:500px;height:400px;'></div>");						
+						
+						$(td3).append(div);		
+						$(tr1).append(td3);
+						$(this).after(tr1); 
+						//--------------------------------------
+						var container = document.getElementById('map');
+						//var position = arr[idx];
+						var idx = $(this).attr("idx");
+						var position = arr[idx];
+						var options = {
+							center : new kakao.maps.LatLng($(position).find("LAT").text(), $(position).find("LNG").text()),
+							level : 3
+						};
+
+						var map = new kakao.maps.Map(container, options);
+						//--------------------------------------
+						
+
+					});
+								
+				});
+
+			}
+		});
+
+		
+		/* 
+		 ****같은방식을 더 쉽게 표현할 수 있음***
+		$.getJSON(url_park, function(data) {
+			var arr = data.GetParkInfo.row;
+			$.each(arr, function(idx, item) {
+
+			});
+		}); */
+
+	});
+</script>
+</head>
+<body>
+	<h2>
+		<i class="material-icons" style="font-size: 36px">local_parking</i>공영주차장
+		정보
+	</h2>
+	<hr>
+
+	 <table id="parkTB" width="100%" class="table table-hover">
+		<tr>
+			<td id="title_name"><strong>주차장명</strong></td>
+			<td id="title_loc"><strong>위치</strong></td>
+		</tr>
+	</table> 
+	<!-- <div id="list">
+	
+	</div>
+ -->
+
+</body>
+</html>

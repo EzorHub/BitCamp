@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+var myWindow;
+function proOpen() {
+	myWindow = open('','', 'width=100, height=100');
+}
+
+function proStart() {
+	myWindow.moveTo(0,0);
+}
+
+function proMove() {
+	setInterval(function(){
+		myWindow.moveBy(10, 10);
+	}, 500);
+}
+
+function proClose() {
+	myWindow.close();		
+	}
+
+</script>
+</head>
+<body>
+<button onclick="proOpen()">창열기</button>
+<button onclick="proStart()">창이동 좌측상단</button>
+<button onclick="proMove()">창계속이동</button>
+<button onclick="proClose()">창닫기</button>
+</body>
+</html>

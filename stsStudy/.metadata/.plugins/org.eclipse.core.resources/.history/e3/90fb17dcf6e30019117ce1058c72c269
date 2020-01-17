@@ -1,0 +1,52 @@
+package com.chat;
+
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
+
+import com.chat.dao.BitMemberDao;
+import com.chat.vo.BitMemberVo;
+
+@Component
+public class BitMailComponent {
+	@Autowired
+	private BitMemberDao bitdao;
+
+	public void setBitdao(BitMemberDao bitdao) {
+		this.bitdao = bitdao;
+	}
+
+	@Autowired
+//	private MailSender javaMailSender;
+	private JavaMailSender javaMailSender;
+
+	// 의존관계설정
+	public void setJavaMailSender(JavaMailSender javaMailSender) {
+		this.javaMailSender = javaMailSender;
+	}
+	
+	
+	@Scheduled(cron="0 0,15,30,45 * 1-30 * ?\r\n")
+	public void sendMail() {
+		SimpleMailMessage msg = new SimpleMailMessage();
+		try {
+			msg.setSubject("요금명세서");
+			msg.setFrom("zo0313zo@gmail.com");		
+			
+			List<BitMemberVo> list = bitdao.listAll();
+			for(BitMemberVo b : list) {
+				msg.setTo(b.getEmail());
+				msg.setText("이번달 요금은 "+b.getPay()+"입니다.");
+				javaMailSender.send(msg);
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+}

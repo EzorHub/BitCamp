@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+
+#canvas{
+	border: 1px solid grey;
+}
+</style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.6.1.min.js"></script>
+<script type="text/javascript">
+$(function () {
+	$("a").click(function (event) {
+		$(this).css("background", "grey");
+		event.preventDefault();
+		event.stopPropagation(); //부모노드의 이벤트를 막음 - h1
+	});
+	$("h1").click(function () {
+		$(this).css("background", "green");
+	})
+	
+});
+
+</script>
+</head>
+<body>
+
+<h1><a href="http://www.google.com">구글</a></h1>
+
+</body>
+</html>

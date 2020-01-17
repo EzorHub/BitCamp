@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	var student = {};	
+	student.이름 = '스녕';
+	student.취미 = '영화보기';
+	student.특기 = '코딩';
+	student.장래희망 = '풀스택개발자';
+	
+	student.toString = function () {
+		var output = "";
+		for(var key in this){ //this==student자신
+			if(key != 'toString'){
+				output += key+"\t"+this[key]+"\n";				
+				
+			}		
+		}
+		return output;
+	}
+	//alert(student.이름);
+	alert(student.toString);
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>

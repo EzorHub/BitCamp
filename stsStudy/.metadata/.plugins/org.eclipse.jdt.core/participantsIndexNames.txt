@@ -1,0 +1,19 @@
+INDEX VERSION 1.131
+C:\stsStudy\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4135483572.index
+\goodsTest\src\main\java
+C:\stsStudy\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2214290848.index
+\bitTest\src\main\java
+C:\stsStudy\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\315217933.index
+\chat\src\main\java
+C:\stsStudy\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3392543850.index
+\bookTest\src\main\java
+C:\stsStudy\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3166404194.index
+\deptManager\src\main\java
+C:\stsStudy\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\338977069.index
+\ajaxTest\src\main\java
+C:\stsStudy\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1058659454.index
+\goods\src\main\java
+C:\stsStudy\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\34364851.index
+\chat\src\main\java
+C:\stsStudy\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\782056109.index
+\bookstore\src\main\java

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="goods">
+
+		<select id="listAll" resultType="goodsVo">
+		select no, name, price, qty,
+		fname from (
+		select rownum n, no, name,
+		price, qty, fname from (
+		select no, name, price, qty, fname from goods
+		<choose>
+			<when test="type != null and type !=''">
+				<choose>
+					<when test="type=='name'">
+						where name like '%'||#{keyword}||'%'
+					</when>
+					<when test="type=='price'">
+						where price ${op} #{keyword}
+					</when>
+				</choose>
+			</when>
+		</choose>
+		<choose>
+		<when test="colName != null and colName != ''">
+			order by ${colName}
+		</when>
+		<when test="colName != null and colName != ''">
+			order by no
+		</when>
+		</choose>
+		)) a 
+		where a.n between #{start} and #{last}
+	</select>
+
+	<insert id="insertGoods">
+		insert into goods values(#{no}, #{name},
+		#{price},#{qty}, #{fname})
+	</insert>
+	<select id="detailGoods" resultType="goodsVo">
+		select * from goods where
+		no=#{no}
+	</select>
+	<update id="updateGoods">
+		update goods set name=#{name},
+		price=#{price},qty=#{qty}, fname=#{fname} where no=#{no}
+	</update>
+	<delete id="deleteGoods">
+		delete goods where no =#{no}
+	</delete>
+	<select id="getCount" resultType="java.lang.Integer">
+		select count(*) from goods
+		<if test="type=='name'">
+			where name like '%'||#{keyword}||'%'
+		</if>
+		<if test="type=='price'">
+			where price ${op} #{keyword}
+		</if>
+	</select>
+
+</mapper>

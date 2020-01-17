@@ -1,0 +1,78 @@
+package com.BOB.vo;
+
+public class Room_ReserVo {
+	private int reser_no;
+	private int cust_no;
+	private int room_no;
+	private String reser_date;
+	private int reser_start;
+	private int reser_time;
+	private int user_num;
+	private int total;
+	public int getReser_no() {
+		return reser_no;
+	}
+	public void setReser_no(int reser_no) {
+		this.reser_no = reser_no;
+	}
+	public int getCust_no() {
+		return cust_no;
+	}
+	public void setCust_no(int cust_no) {
+		this.cust_no = cust_no;
+	}
+	public int getRoom_no() {
+		return room_no;
+	}
+	public void setRoom_no(int room_no) {
+		this.room_no = room_no;
+	}
+	public String getReser_date() {
+		return reser_date;
+	}
+	public void setReser_date(String reser_date) {
+		this.reser_date = reser_date;
+	}
+	public int getReser_start() {
+		return reser_start;
+	}
+	public void setReser_start(int reser_start) {
+		this.reser_start = reser_start;
+	}
+	public int getReser_time() {
+		return reser_time;
+	}
+	public void setReser_time(int reser_time) {
+		this.reser_time = reser_time;
+	}
+	public int getUser_num() {
+		return user_num;
+	}
+	public void setUser_num(int user_num) {
+		this.user_num = user_num;
+	}
+	public int getTotal() {
+		return total;
+	}
+	public void setTotal(int total) {
+		this.total = total;
+	}
+	public Room_ReserVo(int reser_no, int cust_no, int room_no, String reser_date, int reser_start, int reser_time,
+			int user_num, int total) {
+		super();
+		this.reser_no = reser_no;
+		this.cust_no = cust_no;
+		this.room_no = room_no;
+		this.reser_date = reser_date;
+		this.reser_start = reser_start;
+		this.reser_time = reser_time;
+		this.user_num = user_num;
+		this.total = total;
+	}
+	public Room_ReserVo() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+}

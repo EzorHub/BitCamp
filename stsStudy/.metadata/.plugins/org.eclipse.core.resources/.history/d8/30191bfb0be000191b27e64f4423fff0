@@ -1,0 +1,13 @@
+package com.BOB.vo;
+
+public class EVT_CouponVo {
+
+	private int coupon_no;
+	private String isused;
+	private int evt_no;
+	private int cust_no;
+	
+	
+	
+	
+}

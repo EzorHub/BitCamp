@@ -1,0 +1,21 @@
+package com.BOB.vo;
+
+public class STDVo {
+	private int std_no;
+	private String std_image;
+	private String std_name;
+	private String std_intro;
+	private String std_start;
+	private String std_end;
+	private String std_time;
+	private String std_loc;
+	private String std_close;
+	private int std_limit;
+	private String std_content;
+	private int std_hits;
+	private String founder_info;
+	private int founder_number;
+	
+	
+
+}

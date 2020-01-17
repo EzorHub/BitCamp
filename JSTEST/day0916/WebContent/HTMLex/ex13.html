@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+window.onload = function () {
+	
+	document.getElementById("btnA").onclick = function(){
+		var cntA = document.getElementById("cntA");
+		cntA.innerHTML = eval(cntA.innerHTML)+1;
+		document.getElementById("btnB").onclick();
+		
+	}
+	document.getElementById("btnB").onclick = function(){
+		var cntB = document.getElementById("cntB");
+		cntB.innerHTML = eval(cntB.innerHTML)+1;
+		//document.getElementById("btnA").onclick();
+	}
+
+	
+	
+}
+</script>
+</head>
+<body>
+
+<button id="btnA">ButtonA</button>
+<button id="btnB">ButtonB</button>
+
+<h1>버튼A <span id="cntA">0</span></h1>
+<h1>버튼B <span id="cntB">0</span></h1>
+
+</body>
+</html>

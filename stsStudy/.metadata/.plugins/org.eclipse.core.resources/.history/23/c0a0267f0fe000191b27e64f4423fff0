@@ -1,0 +1,10 @@
+package com.BOB.vo;
+
+public class Cafe_Review_ReplyVo {
+	private int reply_no;
+	private String reply;
+	private int review_no;
+	private int cust_no;
+	
+
+}

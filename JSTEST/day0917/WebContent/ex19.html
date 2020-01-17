@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+
+</style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.6.1.min.js"></script>
+<script type="text/javascript">
+$(function () {
+	$("h1").click(function () {
+		//$(this).next().hide(1000); //1초동안에 걸쳐서 내 다음이 사라져랏
+		//$(this).next().toggle("fast"); //1초동안에 걸쳐서 내 다음이 사라져랏
+		$(this).next().toggle("slow", function () {
+			alert("효과끝");
+		}); 
+	});
+	
+});
+
+</script>
+</head>
+<body>
+<h1>열기 & 닫기</h1>
+<div>
+<h3>파주 ASF 발생 역학관계 농가 123곳…"늘어날 수도"</h3>
+<p>(파주=연합뉴스) 우영식 기자 = 17일 국내에서 처음으로 아프리카돼지열병(ASF)이 발병한 경기도 파주 돼지농장과 역학관계에 있는 농장이 123곳으로 파악됐다.</p>
+</div>
+<h1>열기 & 닫기</h1>
+<div>
+<h3>미래 먹거리 콘텐츠산업 키운다…2022년까지 </h3>
+<p>(서울=연합뉴스) 이웅 기자 = 한류로 꽃핀 콘텐츠산업을 혁신성장시대의 주력 산업으로 키우기 위해 정부가 팔을 걷어붙였다.</p>
+</div>
+<h1>열기 & 닫기</h1>
+<div>
+<h3>화면 깨지는 LG TV"·"별 안보이는 삼성TV"…</h3>
+<p>이달초 독일 베를린에서 열린 유럽 최대 가전·IT 전시회 'IFA 2019'에서 한차례 '원정 기싸움'을 벌인 데 이어 이번에는 국내에서 같은 날 시차를 두고 언론 설명회를 잇따라 열어 노골적인 '상호비방'에 나선 것이다.</p>
+</div>
+
+
+</body>
+</html>

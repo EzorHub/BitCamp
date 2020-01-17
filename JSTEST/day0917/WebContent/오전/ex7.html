@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+.high_light {
+	background: green;
+	font: color: white;
+}
+
+.member {
+	border: 1px solid block;
+	display: inline-block;
+	border-radius: 20px;
+	padding: 10px;
+	margin: 10px;
+}
+</style>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-3.4.1.min.js
+"></script>
+<script type="text/javascript">
+	$(function() {
+
+		var xml = "<members>";
+
+		xml += "<member>";
+		xml += "<name>문성빈</name>";
+		xml += "<age>28</age>";
+		xml += "</member>";
+		xml += "<member>";
+		xml += "<name>김소연</name>";
+		xml += "<age>28</age>";
+		xml += "</member>";
+		xml += "<member>";
+		xml += "<name>김희진</name>";
+		xml += "<age>25</age>";
+		xml += "</member>";
+		xml += "<member>";
+		xml += "<name>고한별</name>";
+		xml += "<age>24</age>";
+		xml += "</member>";
+		xml += "<member>";
+		xml += "<name>김선겸</name>";
+		xml += "<age>34</age>";
+		xml += "</member>";
+		xml += "<member>";
+		xml += "<name>박선영</name>";
+		xml += "<age>27</age>";
+		xml += "</member>";
+
+		xml += "</members>";
+
+		var xmlDoc = $.parseXML(xml);
+		var arr = $(xmlDoc).find("member");
+		$.each(arr, function(idx, m) { //m ==member노드, 혹은  this 가능
+			var div = $("<div></div>");
+			var h2 = $("<h2></h2>").html($(this).find("name").text());
+			//this == m이라고 해도 좋음, member의 노드들중에서 name노드를 찾아서 그 값을 h2노드에 담아줄거야
+			var p = $("<p></p>").html($(this).find("age").text());
+
+			$(div).append(h2, p);
+			$(div).addClass("member");
+			$("body").append(div);
+		});
+	});
+</script>
+</head>
+<body>
+
+
+</body>
+</html>

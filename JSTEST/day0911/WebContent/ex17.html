@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js
+"></script>
+<script type="text/javascript">
+	$(function () {
+		
+		$("#btnEmail").click(function () {
+			var email = $("#email").val();
+			var id = email.subString(0, email.indexOf("@"));
+			$("#id").val(id);	
+		});
+		$("#btnAge").click(function () {
+			var jumin = $("jumin").val();
+			var b_year = "19"+jumin.subStr(0, 2);
+			var today = new Date();
+			var t_year = today.getFullYear();
+			var age = t_year - b_year;
+			$("#age").val(age);
+			
+			
+			
+			
+			$("#id").val(id);	
+		});
+		
+		
+		
+	});
+</script>
+</head>
+<body>
+<!-- 
+1.사용자에게 이메일을 입력받아 id만 추출하여 출력하는 스크립트 작성
+tiger@gmail.com
+2.주민번호를 입력받아 나이계산 해보기
+ -->
+ 
+ 이메일: <input type="email" name="email" id="email"><br>
+ 아이디:<input type="text" id="id" readonly="readonly">
+<button id="btnEmail">아이디 확인</button>
+<br>
+<hr>
+
+
+주민번호: <input type="text" name="jumin" id="jumin"><br>
+연도:<input type="text" id="age" readonly="readonly">
+
+<button id="btnAge">나이 확인</button> 
+ 
+</body>
+</html>

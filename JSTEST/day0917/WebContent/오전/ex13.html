@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>객체로 표현</title>
+<style type="text/css">
+
+
+</style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js
+"></script>
+<script type="text/javascript">
+
+$(function () {
+	$("btn").click(function(){
+		$("img").removeAttr("bit");
+	});
+	
+	
+	$("img").attr({
+		width:function(idx){
+			return (idx+1)*50; //width는 개별적으로
+		},
+		height:"50",
+		bit:function(idx){
+			return idx+1; 
+			//사용자가 처리를 위해(노드구분을 위해) 임의의 속성을 추가할 수 있음 
+		}
+			
+	});
+	
+});
+</script>
+</head>
+<body>
+
+<img src="od.jpg"><br>
+<img src="sd.jpg"><br>
+<img src="tbbk.jpg"><br>
+<button id="btn">속성제거</button>
+
+</body>
+</html>

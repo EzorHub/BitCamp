@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>제이쿼리를 이용해서 만들어보기</title>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-3.4.1.min.js
+"></script>
+<script type="text/javascript">
+	var newsArr = [ "조국, 청년들에 '합법여부 떠나 실망드려'",
+			"日정부, 한국의 WTO 제소에 '규칙 위반 아니다' 주장", "귀성길 고속도로 정체 시작…서울→부산 6시간 20분",
+			"경찰, 장제원 아들 통신기록 분석…관련자 모두 소환", "일본여행 취소 국민 43.8% 국내여행 전환"];
+
+	var data = [ {
+		no : 1,
+		name : "떡볶이",
+		price : 3000,
+		qty : 1,
+		fname : "tbbk.jpg"
+	}, {
+		no : 2,
+		name : "오뎅",
+		price : 2500,
+		qty : 1,
+		fname : "od.jpg"
+	}, {
+		no : 3,
+		name : "순대",
+		price : 3000,
+		qty : 1,
+		fname : "sd.jpg"
+	}, {
+		no : 4,
+		name : "와인",
+		price : 50000,
+		qty : 1,
+		fname : "wine2.jpg"
+	}, ];
+	$(function() {
+		var i = 0;
+		var j = 0;
+		setInterval(function() {
+			var n = newsArr[j];
+			$("#news").html(n);
+			
+			j++;
+			if(j>= newsArr.length){
+				j=0;
+			}
+		}, 1000);
+		setInterval(function() {				
+			
+			var g = data[i];			
+			$("#fname").attr("src", g.fname);
+			$("#no").text(g.no);
+			$("#name").text(g.name);
+			$("#price").text(g.price);
+			$("#qty").text(g.qty);
+			i++;
+			if (i >= data.length) {
+				i = 0;
+			}
+			
+		}, 800);
+	});
+</script>
+</head>
+<body>
+	연합뉴스:
+	<span id="news"></span>
+	<br>
+<hr>
+
+	<table width="100%">
+		<tr>
+			<td><img id="fname" width="100" height="100"></td>
+			<td>번호:<span id="no"></span><br> 상품명:<span id="name"></span><br>
+				가격:<span id="price"></span><br> 수량:<span id="qty"></span><br>
+			</td>
+		</tr>
+	</table>
+
+</body>
+</html>

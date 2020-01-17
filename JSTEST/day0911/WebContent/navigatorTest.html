@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>브라우저 종류마다 다르게 서비스-모바일, 데스크탑 등</title>
+<script type="text/javascript">
+	window.onload = function () {
+		var info = document.getElementById("info");
+		info.innerHTML = navigator.userAgent;/*현재브라우저에대한정보를모두출력*/
+	}
+</script>
+</head>
+<body>
+	<h2>브라우저 정보</h2>
+	<h3 id="info"></h3>
+</body>
+</html>

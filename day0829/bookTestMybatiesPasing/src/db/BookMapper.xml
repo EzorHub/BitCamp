@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="book">
+
+	<select id="listAll" resultType="bookVo">
+
+		select bookid, bookname, publisher, price from (
+		select rownum n,
+		bookid, bookname, publisher, price from (select bookid,
+		bookname,
+		publisher,price from book
+		<if test="type != null and type !=''">
+			<if test="type=='bookname'">
+				where bookname like '%'||#{keyword}||'%'
+			</if>
+			<if test="type=='price'">
+				where price ${op} #{keyword}
+			</if>
+		</if>
+		<choose>
+		<when test="colName != null and colName != ''">
+		order by ${colName}
+		</when>		
+		<when test="colName == null or colName == ''">
+			order by bookid
+		</when>
+		</choose>
+		)) a
+		where a.n between #{start} and #{last}
+	</select>
+
+
+
+	<select id="getCount" resultType="java.lang.Integer">
+		select count(*) from book
+		<if test="type != null and type !=''">
+			<if test="type=='bookname'">
+				where bookname like '%'||#{keyword}||'%'
+			</if>
+			<if test="type=='price'">
+				where price ${op} #{keyword}
+			</if>
+		</if>
+	</select>
+</mapper>

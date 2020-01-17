@@ -1,0 +1,213 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+	integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
+	crossorigin="anonymous">
+<link rel="stylesheet" href="jqueryUI/themes/dark-hive/jquery-ui.css">
+<title>제이쿼리 플러그인 연습_ex05_상품에 대한정보_dropbox_ex05참고</title>
+<style type="text/css">
+
+/*구성전 css설정*/
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+/************************************/
+#btnAdd {
+	position: fixed;
+	width: 100px;
+	bottom: 120px; /*선생님은 250*/
+	right: 0px;
+}
+/* #monitor{
+		position: fixed;
+		width: 100px;
+		bottom: 250px;
+		right: 0px;
+		font-size: 62.5%;
+		font-weight: bold;
+} */
+#lbtotal{
+	text-align: right; width : 100px;
+	position: fixed;
+	bottom: 250px;
+	right: 0px;
+	width: 100px;
+	color: #f05d30;
+	font-weight: bold;
+}
+
+#total {
+	color: #f05d30;
+	text-align: right;
+	width: 100px;
+	position: fixed;
+	bottom: 200px;
+	right: 0px;
+	font-weight: bold;
+}
+
+/************************************/
+p, p_img {
+	display: inline-block;
+}
+
+body {
+	font-size: 70%;
+	font-weight: bold;
+}
+
+.item {
+	margin: 3px;
+	padding: 5px;
+}
+
+.item>img {
+	width: 100px;
+	height: 100px;
+}
+
+#wrap {
+	overflow: hidden;
+}
+
+#wrap>div {
+	float: left;
+}
+
+#dock {
+	position: fixed;
+	min-height: 120px;
+	width: 100%;
+	bottom: 0px;
+	z-index: 1;
+}
+
+#dock>div {
+	float: right;
+}
+.qty{
+		width: 50px;
+	}
+</style>
+
+
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-3.4.1.min.js
+"></script>
+<script type="text/javascript" src="jqueryUI/jquery-ui.js"></script>
+<script type="text/javascript">
+	$(function() {
+
+		$("#btnAdd").click(function() {
+			var no_list = $("#dock").find(".no");	
+			var qty_list = $("#dock").find(".qty");
+						
+			var data = {"custid":"tiger",
+					"total":totalPrice
+					};
+			$.each(no_list,function(i,no){
+				var attr_no = "jumunList["+i+"].goods_no";
+				var attr_qty = "jumunList["+i+"].qty";
+				data[attr_no]= $(no).html() ;
+				data[attr_qty]= $(qty_list[i]).val() ;
+			});
+				
+			$.post("insertJumun",			
+				data,			
+				function(r){
+				  alert(r);
+				}
+			  );
+		});
+		/*
+		ajax통신을 수행하여 데이터베이스의 상품의
+		내용으로 요소를 생성하도록 코드를 수정
+		
+		 */
+
+		//-----------------------------
+		var arr;
+		var totalPrice = 0;
+		//-----------------------------
+		
+
+		$.getJSON("goodsInfo", function(data) {
+
+			$.each(data, function(idx, item) {
+
+				var div = $('<div class="item"></div>');
+
+				var name = $("<p><strong></strong></p><br>").html(g.name);
+				var price = $("<p ><strong></strong></p><br>").html(g.price).addClass("price");
+				var qty = $("<p><strong></strong></p><br>").html(g.qty);
+
+				var img = $("<img/><br>").attr("src", "img/" + g.fname);
+
+				$(div).append(img, name, price, qty);
+				$("#wrap").append(div);
+
+			});
+
+			$("#wrap>div").draggable({
+				helper : 'clone',
+				zIndex : 100,
+				scroll : false
+			});
+
+			$("#dock").droppable({
+				accept : "#wrap>div",
+				drop : function(evt, ui) {
+					$(ui.draggable).fadeOut(function() {
+						$(this).appendTo("#dock").fadeIn();
+						
+						 	/* var prices = $("#dock").find(".price");
+							$.each(prices, functon(idx, item){
+									totalPrice += eval($(item).text());
+								});
+
+							$.each(){
+
+								}
+							$("#total").html(totalPrice);  */
+
+					});
+
+				}
+			});
+			$("body").droppable({
+				accept : "#dock>div",
+				drop : function(evt, ui) {
+					$(ui.draggable).fadeOut(function() {
+						$(this).appendTo("#wrap").fadeIn();
+
+						 totalPrice -= eval($(this).find(".sel_price").html());
+						$("#total").html(totalPrice); 
+					});
+				}
+			});
+
+		});
+
+	});
+</script>
+</head>
+<body>
+	<div id="wrap"></div>
+	<div id="order">
+		<span id="lbtotal">총주문금액</span><span id="total">0원</span>
+	</div>
+	<div id="dock" class="ui-state-highlight">	
+		<button id="btnAdd" class="btn btn-dark">order</button>
+	</div>
+</body>
+</html>

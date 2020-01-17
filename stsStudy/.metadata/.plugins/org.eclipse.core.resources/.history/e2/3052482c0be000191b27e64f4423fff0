@@ -1,0 +1,16 @@
+package com.BOB.vo;
+
+public class QAVo {
+
+	private int qa_no;
+	private String qa_title;
+	private String qa_content;
+	private String qa_write_date;
+	private int b_ref;
+	private int b_level;
+	private int b_step;
+	private int cust_no;
+	private int man_no;
+	
+	
+}

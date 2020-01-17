@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-3.4.1.min.js
+"></script>
+<script type="text/javascript">
+	$(function() {
+		 
+		 
+		 $("#btnAdd").click(function(){
+			 var input = $("input[type=text]");
+			 var tr = $("<tr></tr>");
+			 $.each(input, function(idx, item){
+				$(tr).append($("<td></td>").html( $(item).val()));
+				$("#tb").append(tr);
+			 });
+			 alert(input.length);
+			 var name = $("#name").val();
+			 var kor = $("#kor").val();
+			 var eng = $("#eng").val();
+			 var math = $("#math").val();
+			 
+/* 			 var sum = eval(kor+eng+math);
+			 var avg = eval(sum/3);		 */
+			 
+			 alert(sum);
+			 alert(avg);
+			 
+		 });
+	});
+</script>
+</head>
+<body>
+	이름: <input type="text" id="name"><br>
+	국어: <input type="text" id="kor"><br>
+	영어: <input type="text" id="eng"><br>
+	수학: <input type="text" id="math"><br>
+	<button id="btnAdd">추가</button>
+	<table id="tb" width="100%">
+	<tr>
+	<td>이름</td>
+	<td>국어</td>
+	<td>영어</td>
+	<td>수학</td>
+	<td>총점</td>
+	<td>평균</td>
+	</tr>
+	</table>
+	
+	
+	
+</body>
+</html>

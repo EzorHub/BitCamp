@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	window.onload = function() {
+		document.getElementById("btnAdd").onclick = function() {
+			var img = document.createElement("img");
+			img.src = "patrick.png";
+			img.width = "100";
+			img.height = "100";
+			
+			var result = document.getElementById("result");
+			result.appendChild(img);
+			
+		}
+	}
+</script>
+</head>
+<body>
+
+	<div id="result"></div>
+	<button id="btnAdd">이미지노드 추가</button>
+</body>
+</html>

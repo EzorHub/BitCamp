@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>pdf79 함수생성실험 - return값을 html에 출력</title>
+<script type="text/javascript">
+	var pro = function (a, b) {
+		/*result1로 반환됨*/
+		var r = a + b;
+		return "더하기결과: "+r;
+	}
+	function hello(name) {
+		/*result2로 반환됨*/
+		return "안녕, "+name;		
+	}
+		
+	window.onload = function () {
+		var r1 = pro(2,3);
+		var r2 = hello('스녕아');
+		document.getElementById("result1").innerHTML = r1;
+		document.getElementById("result2").innerHTML = r2;
+		
+	}
+</script>
+</head>
+<body>
+	<div id="result1"></div>
+	<div id="result2"></div>
+</body>
+</html>

@@ -1,0 +1,13 @@
+package com.chat.vo;
+
+import java.util.Date;
+
+public class JumunVo {
+	private int no;
+	private String custid;
+	private int total;
+	private Date order_date;
+	
+	
+
+}

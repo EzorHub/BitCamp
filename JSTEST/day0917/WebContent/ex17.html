@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+.goods{
+		border: 1px solid pink;
+		border-radius: 10px;
+		width: 300px;
+		height: 150px;
+		margin: 10px;
+		padding: 10px;
+	}
+</style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.6.1.min.js"></script>
+<script type="text/javascript">
+$(function () {
+	var arr = [		
+		{no:1, name:"오뎅", price:3000, fname:"od.jpg"},
+		{no:2, name:"계란말이", price:3000, fname:"mari.jpg"},
+		{no:3, name:"떡볶이", price:3000, fname:"tbbk.jpg"},
+		{no:4, name:"김밥", price:3000, fname:"chic.jpg"},
+		{no:5, name:"쫄면", price:3000, fname:"od.jpg"},
+		{no:6, name:"라면", price:3000, fname:"od.jpg"},
+		{no:7, name:"우동", price:3000, fname:"ud.jpg"},
+		{no:8, name:"볶음우동", price:3000, fname:"chic.jpg"},
+		{no:9, name:"간장떡볶이", price:3000, fname:"chic.jpg"},
+		
+		{no:10, name:"고구마치즈돈까스", price:3000, fname:"chic.jpg"},
+		{no:11, name:"순대", price:3000, fname:"sd.jpg"},
+		{no:12, name:"돌솥비빔밥", price:3000, fname:"chic.jpg"},
+		{no:13, name:"닭강정", price:3000, fname:"chic.jpg"},
+		{no:14, name:"치즈볼", price:3000, fname:"chic.jpg"},
+		{no:15, name:"쌀국수", price:3000, fname:"chic.jpg"},
+		{no:16, name:"초밥", price:3000, fname:"chic.jpg"},
+		{no:17, name:"뿌팟퐁커리", price:3000, fname:"chic.jpg"},
+		{no:18, name:"짜조", price:3000, fname:"chic.jpg"},
+		{no:19, name:"파인애플볶음밥", price:3000, fname:"chic.jpg"},
+		{no:20, name:"주먹밥", price:3000, fname:"chic.jpg"}
+		
+		];
+	
+	$.lg= (function () {
+		$.each(arr, function(idx, g){
+			var div = $("<div></div>");
+			var tb = $("<table></table>");
+			var tr = $("<tr></tr>");
+			var td1 = $("<td></td>");
+			var td2 = $("<td></td>");
+			var img = $("<img/>").attr({
+				src:"img/"+g.fname,
+				width:"50px",
+				height:"50px"
+			});
+			
+			$(td1).append(img);
+			
+			var p1 = $("<p></p>").html("상품번호:"+g.no);
+			var p2 = $("<p></p>").html("상품명:"+g.name);
+			var p3 = $("<p></p>").html("상품가격:"+g.price);
+			$(td2).append(p1,p2,p3);		
+			$(tr).append(td1,td2);
+			$(tb).append(tr);
+			$(div).append(tb);		
+			$(div).addClass("goods");
+			$("#list").append(div);
+		});
+	});
+	$.lg();
+	
+	$(window).scroll(function () {
+		var scrollHeight = $(window).scrollTop()+$(window).height();
+		var documentHeight = $(document).height();
+		if(scrollHeight +300 >= documentHeight){
+			$.lg();
+		}
+	})
+	
+	
+});
+
+</script>
+</head>
+<body>
+<div id="list"></div> 
+
+</body>
+</html>

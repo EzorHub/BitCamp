@@ -1,0 +1,45 @@
+package com.chat.dao;
+
+import java.util.HashMap;
+import java.util.List;
+
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Repository;
+
+import com.chat.db.DBManager;
+import com.chat.vo.GoodsVo;
+import com.chat.vo.Jumun;
+
+@Repository
+public class GoodsDao {
+	
+	public List<GoodsVo> listPage(HashMap map){
+		System.out.println("2");
+		return DBManager.listPage(map);
+	}
+	
+	public List<GoodsVo> listGoods(){
+		return DBManager.listGoods();
+	}
+	
+	public int goodsCount() {
+		return DBManager.goodsCount();
+	}
+
+	//----------------2019/09/25---------------------
+	public List<GoodsVo> goodsInfo() {
+		// TODO Auto-generated method stub
+		return DBManager.goodsInfo();
+	}
+	//----------------2019/09/26---------------------
+	public int insertJumun(Jumun jumun)
+    {
+        return DBManager.insertJumun(jumun);
+    }
+	//----------------2019/09/30---------------------
+//	@Scheduled(fixedRate = 1000) 1초마다
+	@Scheduled(cron = "*/15 * * * *") //30분마다 실행
+	public void pro() {
+		System.out.println("콜콜~!");
+	}
+}

@@ -1,0 +1,60 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>제이쿼리 플러그인 연습_ex01</title>
+<style type="text/css">
+body{
+font-size: 62.5%
+}
+h1{text-align: center;}
+input[type=text], label {
+	margin-bottom: 12px; padding: .4em;
+	width: 95%;
+}
+
+</style>
+<link rel="stylesheet" href="jqueryUI/themes/dark-hive/theme.css">
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js
+"></script>
+<script type="text/javascript" src="jqueryUI/jquery-ui.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("#dialog").dialog({
+		buttons:{submit:function(){
+				var data = $("#dialog").serialize(); //쿼리스트링 serializeArray는 객체
+				$.ajax({url:"insertSchedule",type:"POST",data:data,
+					success:function(r){
+						
+
+						}});
+			},
+			reset:function(){
+				alert("리셋");
+				},
+			cancel:function(){
+				alert("취소");
+				}
+			},
+			modal:true
+			//modal:false
+		});
+	$("#evt_date").datepicker();
+});
+
+</script>
+</head>
+<body>
+
+<form id="dialog" title="일정등록"> <!-- 플러그인에서 title속성 요구? -->
+	<h1>일정등록</h1>
+	<label for="evt_name">일정이름</label> <!-- html5, 라벨사용권장 -->
+	<input type="text" name="evt_name" id="evt_name"><br>
+	<label for="evt_date">날　　짜</label> <!-- html5, 라벨사용권장 -->
+	<input type="text" name="evt_date" id="evt_date">
+</form>
+
+</body>
+</html>

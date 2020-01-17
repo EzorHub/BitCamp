@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+.high_light{
+	background: green;
+	
+}
+</style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.6.1.min.js"></script>
+<script type="text/javascript">
+$(function () {
+	$("h1").hover(function () {
+		$(this).addClass("high_light");
+	}, function () {
+		$(this).removeClass("high_light");
+	});
+	
+});
+
+</script>
+</head>
+<body>
+<h1>둘리</h1>
+
+</body>
+</html>

@@ -1,0 +1,131 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+	integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
+	crossorigin="anonymous">
+<link rel="stylesheet" href="jqueryUI/themes/dark-hive/jquery-ui.css">
+<title>제이쿼리 플러그인 연습_ex05_상품에 대한정보_dropbox_ex05참고</title>
+<style type="text/css">
+
+/*구성전 css설정*/
+*{
+	margin: 0px;padding: 0px;
+}
+#btnAdd{
+	position: fixed;
+		width: 100px;
+		bottom: 120px;/*선생님은 250*/
+		right: 0px;
+}
+#price_monitor{
+	position: fixed;
+		width: 100px;
+		bottom: 120px;
+		right: 20px;
+}
+p, p_img{
+	display: inline-block;
+}	
+body{
+	font-size: 70%;
+	font-weight: bold;
+}
+
+.item{
+	margin: 3px;padding: 5px;
+}
+.item>img{
+	width: 100px;height: 100px;
+}
+
+#wrap{overflow: hidden;}
+#wrap>div{float: left;}
+#dock{position: fixed; min-height: 120px;width: 100%;
+		bottom: 0px;z-index: 1;}
+#dock>div{float: right;}
+</style>
+
+
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-3.4.1.min.js
+"></script>
+<script type="text/javascript" src="jqueryUI/jquery-ui.js"></script>
+<script type="text/javascript">
+	$(function() {
+		/*
+		ajax통신을 수행하여 데이터베이스의 상품의
+		내용으로 요소를 생성하도록 코드를 수정
+		
+		*/
+		var div_desc;
+		var p_name, p_fname,p_qty,p_price, p;
+		
+				
+			$.getJSON("goodsInfo", function(data){
+				
+				$.each(data, function(idx, g){
+					
+ 					var div = $('<div class="item"></div>');
+					p = $("<p><strong></strong></p>").html(g.name+"<br>"+g.price+"<br>"+g.qty);					
+					p_img = $("<img/>").attr(
+							"src","img/"+g.fname);
+
+					$(div).append(p,p_img);
+					$("#wrap").append(div);
+					
+					});
+
+				$("#wrap>div").draggable({
+					helper:'clone',
+					zIndex:100,
+					scroll:false
+					});
+
+				$("#dock").droppable({
+					accept:"#wrap>div",
+					drop:function(evt, ui){
+						$(ui.draggable).fadeOut(function(){
+							$(this).appendTo("#dock").fadeIn();							
+							
+							
+							});
+
+						
+						}
+					});
+				$("body").droppable({
+					accept:"#dock>div",
+					drop:function(evt, ui){
+						$(ui.draggable).fadeOut(function(){
+							$(this).appendTo("#wrap").fadeIn();
+							});
+						}
+					});
+
+				
+						
+
+			});
+			
+			
+	
+			
+	});
+</script>
+</head>
+<body>
+	<div id="wrap">	
+	</div>
+	<label id="price_monitor"></label>
+	<button id="btnAdd" class="btn btn-dark">order</button>
+	<div id="dock" class="ui-state-highlight"></div>
+</body>
+</html>

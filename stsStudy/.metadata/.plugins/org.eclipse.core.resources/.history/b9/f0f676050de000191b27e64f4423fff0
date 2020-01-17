@@ -1,0 +1,10 @@
+package com.BOB.vo;
+
+public class Keyword_LocVo {
+
+	private String key_name;
+	private int key_name_hit;
+	private int cust_no;
+	
+	
+}

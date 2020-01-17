@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="emp">
+	<select id="searchEmp" resultType="searchvo">
+		select eno,ename,dname,dloc,(sal*12)income,hiredate,((sysdate-hiredate)/30)m from
+		emp,dept
+		where emp.dno=dept.dno and mgr = (select eno from emp where ename=#{name})
+		order by m desc
+	</select>
+
+</mapper>

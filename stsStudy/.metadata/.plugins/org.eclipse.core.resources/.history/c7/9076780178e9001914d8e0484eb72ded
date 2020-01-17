@@ -1,0 +1,52 @@
+package com.bit.advice;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.TimeZone;
+
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Pointcut;
+
+@Aspect
+public class ProfilingAdvice {
+	String call;
+	String methodName;
+	long runTime;
+	
+
+	// com.bit.dao - 그룹지어서 일반화 - pointCut
+	@Pointcut("execution(public * com.bit.dao..*(..))")
+	public void profileTarget() {
+	} // 메소드이름이 xml의 id
+
+	@Around("profileTarget()")
+	public Object pro(ProceedingJoinPoint joinPoint) {
+		Object ret = null;
+		try {
+			String methodName = joinPoint.getSignature().toShortString();
+			System.out.println(methodName + "이 동작하기 전입니다.");
+			Date date = new Date();
+			TimeZone tz;
+			DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss (z Z)");
+			tz = TimeZone.getTimeZone("Asia/Seoul");
+			df.setTimeZone(tz);
+			System.out.println(methodName + "메서드의 요청 시간");
+			call = tz.getDisplayName()+df.format(date);
+			System.out.format("%s%n%s%n%n", tz.getDisplayName(), df.format(date));
+			long start = System.currentTimeMillis();
+			ret = joinPoint.proceed();
+			long end = System.currentTimeMillis();
+			System.out.println(methodName + "이 동작이 완료되었습니다.");
+			runTime = (end-start);
+			System.out.println("메소드 동작에 걸린시간: " + runTime + "초");
+
+		} catch (Throwable e) {
+			e.printStackTrace();
+		}
+		return ret;
+	}
+
+}

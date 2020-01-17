@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-3.4.1.min.js
+"></script>
+<script type="text/javascript">
+	$(function() {
+		var arr = [ "샌드위치", "샐러드", "베이글", "스콘" ];
+		var result = $("#result");
+		$("#btn").click(function() {
+			$.each(arr, function(index, data) { /*JS와 반대! 앞 이 index, 뒤가 data 하나만쓰면 index*/
+				var li = $("<li></li>").html(data);
+				$(result).append(li);
+
+			});
+
+		});
+	});
+</script>
+<body>
+	<h2>스녕이가 추천하는 간식메뉴</h2>
+	<hr>
+	<ul id="result"></ul>
+	<button id="btn">출력</button>
+	<!-- btn누르면 동적노드생성-메뉴 출력되도록 -->
+
+</body>
+</html>

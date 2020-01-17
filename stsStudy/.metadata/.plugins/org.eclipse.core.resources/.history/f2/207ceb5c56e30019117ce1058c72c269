@@ -1,0 +1,25 @@
+package com.chat;
+
+import java.util.HashMap;
+
+import org.springframework.mail.javamail.JavaMailSenderImpl;
+import org.springframework.stereotype.Component;
+
+@Component
+public class SmtpComonent {
+	public JavaMailSenderImpl javaMailSender() {
+		JavaMailSenderImpl r 
+		= new JavaMailSenderImpl();
+		r.setHost("smtp.naver.com");
+		r.setPort(465);
+		r.setUsername("bsy62305");
+		r.setPassword("");
+		r.setDefaultEncoding("utf-8");
+		
+		HashMap map = new HashMap();
+		
+		return r;
+	}
+
+
+}

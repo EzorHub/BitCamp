@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+
+
+</style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js
+"></script>
+<script type="text/javascript">
+
+$(function () {
+	var content = [
+		{name:"해리포터", attr:"그리핀도르"},
+		{name:"해르미온느", attr:"그리핀도르"},
+		{name:"말포이", attr:"슬레데린"}
+		];
+	
+	
+	$("#btnAdd").click(function () {
+		$("div").append(function (idx) {
+			var item = content[idx];
+			var str = "";
+			str += "<h2>"+item.name+"</h2>";
+			str += "<h3>"+item.attr+"</h3>";
+			return str;
+			
+		});
+	});
+});
+</script>
+</head>
+<body>
+<h1>학생1</h1>
+<div></div>
+<hr>
+<h1>학생2</h1>
+<div></div>
+<hr>
+<h1>학생3</h1>
+<div></div>
+<hr>
+<button id="btnAdd">노드추가</button>
+</body>
+</html>

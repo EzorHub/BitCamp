@@ -1,0 +1,9 @@
+package com.BOB.vo;
+
+public class Cafe_Review_ImageVo {
+	
+	private int review_img_no;
+	private String review_img;
+	private int review_no;
+
+}

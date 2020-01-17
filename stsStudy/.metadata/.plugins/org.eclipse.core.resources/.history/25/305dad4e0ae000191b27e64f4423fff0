@@ -1,0 +1,9 @@
+package com.BOB.vo;
+
+public class SNS_IMGVo {
+	private int sns_img_no;
+	private String sns_img_name;
+	private int sns_no;
+	
+	
+}

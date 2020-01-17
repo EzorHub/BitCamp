@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>innerFade사용법</title>
+
+<style type="text/css">
+div {
+	text-align: center;
+	color: green;
+	width: 50px;
+	height: 50px;
+	background: orange;
+	margin: 10px;
+	position: relative;
+}
+span{
+	text-align: center;
+}
+</style>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$("div").toggle(function() {
+			$(this).animate({
+				left : 500
+			}, 'slow');
+		}, function() {
+			$(this).animate({
+				left : 0
+			}, 'slow');
+		});
+	});
+</script>
+
+</head>
+<body>
+	<div><span><strong>A</strong></span></div>
+	<div><span><strong>B</strong></span></div>
+	<div><span><strong>C</strong></span></div>
+	
+</body>
+</html>

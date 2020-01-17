@@ -1,0 +1,23 @@
+<%@ page language="java" contentType="application/xml; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+String str = "";
+
+str = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>";
+str += "<rows>";
+str += "<page>1</page>";
+str += "<total>3</total>";
+str += "<records>22</records>";
+for(BookVo b :list) {
+	str += "<row>";
+	str += "<cell>"+b.getBookid()+"</cell>";
+	str += "<cell>"+b.getBookname()+"</cell>";
+	str += "<cell>"+b.getPublisher()+"</cell>";
+	str += "<cell>"+b.getPrice()+"</cell>";			
+	str += "</row>";
+}
+
+str += "</rows>";
+
+%>
+<%= str %>

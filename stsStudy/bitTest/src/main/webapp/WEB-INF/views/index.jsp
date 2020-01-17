@@ -1,0 +1,33 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+
+		$("#btnDownload").click(function() {
+
+			$.ajax({
+				url : "http://203.236.209.118:5000/down_webtoon.do",
+				success : function(r) {
+					alert("성공~!")
+				}
+			});
+
+		});
+
+	});
+</script>
+</head>
+<body>
+	<h2>flask와 tomcat연동 실험</h2>
+	<hr>
+
+	<button id="btnDownload">웹툰다운받기</button>
+</body>
+</html>

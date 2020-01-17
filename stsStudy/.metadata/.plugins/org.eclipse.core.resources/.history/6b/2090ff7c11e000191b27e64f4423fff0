@@ -1,0 +1,10 @@
+package com.BOB.vo;
+
+public class Cafe_ImgVo {
+
+	private int cafe_img_no;
+	private String cafe_img_name;
+	private int cafe_no;
+	
+	
+}

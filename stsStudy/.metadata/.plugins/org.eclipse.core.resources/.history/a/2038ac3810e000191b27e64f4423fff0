@@ -1,0 +1,14 @@
+package com.BOB.vo;
+
+public class Cafe_InqVo {
+
+	private int inq_no;
+	private int cafe_no;
+	private String inq_content;
+	private String inq_reply;
+	private String issecret;
+	private int cust_no;
+	
+	
+	
+}

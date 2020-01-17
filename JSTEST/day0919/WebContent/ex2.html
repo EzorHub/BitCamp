@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+	
+window.onload = function(){
+	
+	var btn = document.getElementById("btn").onclick = function(){
+		var request = new XMLHttpRequest();
+		//-----------------------------
+		request.open('GET', 'bit2.jsp?a=3', true);
+		//.jsp?변수는 왜? 스레드 history문제
+		request.send();
+		//-----------------------------
+		request.onreadystatechange = function(evt){
+			if(request.readyState == 4){
+				if(request.status == 200){
+					var span = document.getElementById("span");
+					span.innerHTML = request.responseText;	
+				}
+			}	
+		}
+		
+		
+		
+		
+	};
+	
+	
+	
+	
+	
+	
+	
+}
+	
+	
+	
+</script>
+</head>
+<body>
+	<input type="text"><br>
+	결과:	<span id="span"></span><br>
+	<button id="btn" >ajax통신</button>
+</body>
+</html>

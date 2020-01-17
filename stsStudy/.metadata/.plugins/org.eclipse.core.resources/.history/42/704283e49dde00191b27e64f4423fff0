@@ -1,0 +1,32 @@
+package com.chat.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.chat.dao.ScheduleDao;
+
+
+@Controller
+public class IndexController {
+	
+	
+	//-----------------------------------------------
+	private ScheduleDao sdao;
+	public void setSdao(ScheduleDao sdao) {
+		this.sdao = sdao;
+	}
+	@RequestMapping("/ex01")
+	public void ex() {
+		
+	}
+	//-----------------------------------------------
+	@RequestMapping("/index.do")
+	public void index() {
+		
+	}
+	
+	
+	
+	
+	
+}

@@ -1,0 +1,12 @@
+package com.BOB.vo;
+
+public class NoticeVo {
+
+	private int notice_no;
+	private String notice_title;
+	private String notice_content;
+	private String write_date;
+	private int hits;
+	private int man_no;
+	
+}

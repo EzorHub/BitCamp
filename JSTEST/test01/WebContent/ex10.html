@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+	window.onload = function() {
+		document.getElementById("btn").onclick = function() {
+
+			var str = "";
+			var dept = [ [ "100", "개발1부", "서울" ], [ "200", "개발2부", "부산" ],
+					[ "300", "개발3부", "제주" ] ];
+
+			/*동적으로 테이블 생성*/
+			str += "<table width='100%'>";
+			str += "<tr>";
+			str += "<td>부서번호</td>";
+			str += "<td>부서명</td>";
+			str += "<td>부서위치</td>";
+			str += "</tr>";
+			for (var i = 0; i < dept.length; i++) {
+				str += "<tr>";
+				for (var j = 0; j < dept[i].length; j++) {
+					str += "<td> " + dept[i][j] + " </td>";
+				}
+				str += "</tr>";
+			}
+			str += "</table>";
+			document.getElementById("result").innerHTML = str; 
+
+		}
+	}
+</script>
+</head>
+<body>
+	<h2>부서목록</h2>
+	<div id="result"></div>
+	<button id="btn">누르셈</button>
+</body>
+</html>

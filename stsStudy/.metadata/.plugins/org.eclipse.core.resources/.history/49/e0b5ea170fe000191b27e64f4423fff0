@@ -1,0 +1,10 @@
+package com.BOB.vo;
+
+public class Get_PassVo {
+
+	private int get_pass_no;
+	private int total;
+	private int cust_no;
+	private int pass_no;
+	
+}

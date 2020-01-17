@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+*{
+	margin: 0px;
+	padding: 0px;
+}
+
+div{
+	margin: 5px;
+	padding: 3px;
+	
+	border-width: 3px;
+	border-style: solid;
+	border-color: black;
+	border-radius: 10px;
+}
+</style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.6.1.min.js"></script>
+<script type="text/javascript">
+$(function () {
+	$("div").click(function(){
+		var h = $("h1", this).text();
+		var p = $("p", this).text();
+		alert(h+"\n"+p);
+	});
+	
+});
+
+</script>
+</head>
+<body>
+<div>
+<h1>둘리</h1>
+<p>둘리시 둘리동</p>
+</div>
+<div>
+<h1>물리</h1>
+<p>둘리시 둘리동</p>
+</div>
+<div>
+<h1>몰리</h1>
+<p>둘리시 둘리동</p>
+</div>
+
+
+</body>
+</html>

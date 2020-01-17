@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	window.onload = function() {
+		document.getElementById("btn").onclick = function() {
+			var str = "";
+			var kor = document.getElementById("kor").value;
+			var eng = document.getElementById("eng").value;
+			var math = document.getElementById("math").value;
+			var sum = Number(kor+eng+math);
+			var avg = Number(sum/sum.size);			 
+			
+		}
+		document.getElementById("sum").innerHTML = sum;
+		document.getElementById("avg").innerHTML = avg;
+
+	}
+</script>
+</head>
+<body>
+	<h2>2019학년도 2학기 중간고사 자료입력</h2>
+	<hr>
+
+	이름:
+	<input type="text" id="name" required="required">
+	<br> -점수입력-
+	<br> 국어:
+	<input type="number" id="kor" required="required">
+	<br> 영어:
+	<input type="number" id="eng" required="required">
+	<br> 수학:
+	<input type="number" id="math" required="required">
+	<br>
+
+	<button id="btn">평점구하기</button>
+	<br> 총점:
+	<div id="sum"></div>
+	<br> 평균:
+	<div id="avg"></div>
+	<br>
+
+	
+	
+
+
+
+
+
+
+</body>
+</html>

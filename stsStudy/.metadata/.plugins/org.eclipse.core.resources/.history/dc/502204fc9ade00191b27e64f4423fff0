@@ -1,0 +1,9 @@
+package com.chat.vo;
+
+public class SccheduleVo {
+	private int no;
+	private String evt_name;
+	private String evt_date;
+	
+	
+}

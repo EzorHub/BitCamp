@@ -1,0 +1,47 @@
+package com.chat;
+/*0930-스프링-pdf-메일발송*/
+
+import java.util.Properties;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
+import org.springframework.stereotype.Component;
+
+@Component
+public class SmtpComonent {
+	
+	@Bean
+	public JavaMailSenderImpl javaMailSender() {
+		JavaMailSenderImpl r 
+		= new JavaMailSenderImpl();
+		//---------------------------------------------
+		//r.setHost("smtp.naver.com"); - 네이버
+		//r.setPort(465);
+		//r.setPort(587); - tls서버	
+		//r.setUsername("bsy62305");
+		//r.setPassword("");
+		//r.setDefaultEncoding("utf-8");		
+		//---------------------------------------------
+		//구글
+		r.setHost("smtp.gmail.com");
+		r.setPort(465);
+		//r.setPort(587); - tls서버	
+		r.setUsername("zo0313zo@gmail.com"); //구글은 이메일 전체씀
+		r.setPassword("dhfpswl1");
+		r.setDefaultEncoding("utf-8");
+		//---------------------------------------------
+		
+		Properties prop = new Properties();		
+		prop.put("mail.smtp.ssl.enable", true);
+		//prop.put("mail.smtp.starttls.enable", true);
+		prop.put("mail.smtp.auth", true);
+		prop.put("mail.smtp.ssl.checkserveridentity", true);
+		prop.put("mail.smtp.ssl.trust", "*");
+		
+		r.setJavaMailProperties(prop);
+		
+		return r;
+	}
+
+
+}

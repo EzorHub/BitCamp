@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+.high_light{
+	background: green;
+	
+}
+</style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.6.1.min.js"></script>
+<script type="text/javascript">
+$(function () {
+	$("h1").click(function(){
+		$(this).html("안녀엉");
+		alert("안녕");
+		$(this).unbind(); //근데 이벤트를 한번 발생하고 끝내면 뭔가 비효율~
+	});
+	
+});
+
+</script>
+</head>
+<body>
+<h1>둘리1</h1>
+<h1>둘리2</h1>
+<h1>둘리3</h1>
+
+</body>
+</html>

@@ -1,0 +1,18 @@
+package com.BOB.vo;
+
+public class CustomerVo {
+
+	private int cust_no;
+	private String cust_name;
+	private String cust_nick;
+	private String cust_img;
+	private String phone;
+	private String addr;
+	private String email;
+	private String id;
+	private String pwd;
+	private String cust_q;
+	private String cust_a;
+	
+	
+}

@@ -1,0 +1,10 @@
+package com.BOB.vo;
+
+public class STD_PickersVo {
+	private int pickers_no;
+	private int std_no;
+	private int cust_no;
+	
+	
+
+}

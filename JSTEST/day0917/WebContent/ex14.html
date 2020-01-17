@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+
+</style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.6.1.min.js"></script>
+<script type="text/javascript">
+$(function () {
+	$("textarea").keyup(function () { //키보드 누르다가 손떼는 순간
+		var inputlength = $(this).val().length;
+		var remain = 150-inputlength;		
+		$("h1").html(remain);
+		
+		if(remain>=0){
+			$("h1").css("color", "green");			
+		}else{
+			$("h1").css("color", "grey");
+		}
+		
+		
+	});	
+});
+
+</script>
+</head>
+<body>
+
+<div>
+<p>지금 내 생각을 </p>
+<h1>150</h1><!-- 남아있는 글자수 출력될 예정 -->
+<textarea rows="5" cols="70"></textarea> <!--  maxlength="150" -->
+</div>
+
+</body>
+</html>

@@ -1,0 +1,6 @@
+package com.bit.advice;
+
+
+public class ProfilingAdvice {
+
+}

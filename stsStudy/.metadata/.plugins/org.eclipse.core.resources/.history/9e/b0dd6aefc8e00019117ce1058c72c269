@@ -1,0 +1,27 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>0926</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js
+"></script>
+<script type="text/javascript">
+$(function(){
+		$.getJSON("listAllBook", function(data){
+				//var arr = eval( "("+data+")" );
+				alert(data.length);
+			});		
+});
+
+</script>
+</head>
+
+<body>
+<h2>도서관리</h2>
+<hr>
+
+
+</body>
+</html>

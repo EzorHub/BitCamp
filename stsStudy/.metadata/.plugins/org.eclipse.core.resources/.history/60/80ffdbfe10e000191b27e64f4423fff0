@@ -1,0 +1,13 @@
+package com.BOB.vo;
+
+public class Room_TimeVo {
+
+	private int time_no;
+	private int start_time;
+	private int end_time;	
+	private int time_price;
+	private int room_no;
+	
+	
+	
+}

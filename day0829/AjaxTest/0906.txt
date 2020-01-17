@@ -1,0 +1,6 @@
+jsp의 javaScript가 뭐가 다름?
+---------->웹 프로그래밍 언어
+jsp: 서버사이드
+javaScript:클라이언트 사이드
+
+jquery 필요성

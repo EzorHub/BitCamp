@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-3.4.1.min.js
+"></script>
+<script type="text/javascript">
+	$(function() {
+		//$("input[type=text]") == 배열임 
+		var a= $("input[type=text]").val();
+		//그냥 .val이면 첫번째 값만 읽어들임 val()이면 set느낌
+		alert(a);
+		
+	});
+</script>
+</head>
+<body>
+	<input type="text" value="징징이"><br>
+	<input type="password"><br>
+	<input type="radio"><br>
+	<input type="checkbox"><br>
+	<input type="file"><br>
+	<input type="text" value="폰지밥">
+	
+</body>
+</html>

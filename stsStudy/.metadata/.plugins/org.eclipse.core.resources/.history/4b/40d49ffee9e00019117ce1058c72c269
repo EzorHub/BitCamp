@@ -1,0 +1,72 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>0926</title>
+<link rel="stylesheet" href="jQgrid/css/ui.jqgrid-bootstrap-ui.css">
+<link rel="stylesheet" href="jQgrid/css/ui.jqgrid.css">
+<link rel="stylesheet" href="jqueryUI/themes/ui-darkness/jquery-ui.css">
+<style type="text/css">
+*{
+	font-size: 62.5%;
+	size: 100%;
+	
+}
+h2{
+	font-size: 13.5px;
+}
+
+#gbox_grid{
+	position: relative;
+	margin-left: 300px;
+	margin-right: 300px;
+}
+</style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js
+"></script>
+<script type="text/javascript" src="jQgrid/js/i18n/grid.locale-en.js"></script>
+<script type="text/javascript" src="jQgrid/js/jquery.jqGrid.min.js">
+</script>
+<script type="text/javascript">
+$(function(){
+		
+		
+				//alert(data.length);
+				$("#grid").jqGrid({
+					url:"/getBooks",
+					editurl:"/editBooks",
+					pager:"#pager",					
+					height:"100%",
+					rowNum:10,
+					rowList:[10,20,30],
+					colNames:['bookid','bookname','publisher','price'],
+					colModel:[{name:'bookid',index:'bookid',width:50,editable:true},
+					{name:'bookname',index:'bookname',width:100,editable:true},
+					{name:'publisher',index:'publisher',width:100,editable:true},
+					{name:'price',index:'price',width:100,editable:true}
+				]
+					}).navGrid("#pager", {
+						search:true,
+						edit:true,
+						add:true,
+						del:true
+						});
+
+
+				
+			
+});
+
+</script>
+</head>
+
+<body>
+<h2>도서관리</h2>
+<hr>
+<table id="grid"></table>
+<div id="pager"></div>
+
+</body>
+</html>

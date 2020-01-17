@@ -1,0 +1,28 @@
+package com.BOB.vo;
+
+public class SNS_IMGVo {
+	private int sns_img_no;
+	private String sns_img_name;
+	private int sns_no;
+	
+	public int getSns_img_no() {
+		return sns_img_no;
+	}
+	public void setSns_img_no(int sns_img_no) {
+		this.sns_img_no = sns_img_no;
+	}
+	public String getSns_img_name() {
+		return sns_img_name;
+	}
+	public void setSns_img_name(String sns_img_name) {
+		this.sns_img_name = sns_img_name;
+	}
+	public int getSns_no() {
+		return sns_no;
+	}
+	public void setSns_no(int sns_no) {
+		this.sns_no = sns_no;
+	}
+	
+	
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+div{
+	background-color:#0B6121;
+	margin:2px;
+	/*border: 1px solid #0B6121;*/
+	width: 100px;
+	height: 100px;
+	position: relative;
+}
+
+</style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.6.1.min.js"></script>
+<script type="text/javascript">
+	$(function () {
+		setInterval(function(){
+		$("div").each(function (idx) {
+			$(this).delay(idx*500).animate({
+				left:500
+			}, 1000);
+		});
+		var idx =6;
+		$("div").each(function (idx) {
+			$(this).delay(idx).animate({
+				left:0
+			}, 1000);
+		});
+		},3000);
+		
+		/*
+		
+		
+			
+		
+		
+		*/
+	});
+</script>
+</head>
+<body>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</body>
+</html>

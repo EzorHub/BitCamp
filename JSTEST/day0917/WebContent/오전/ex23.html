@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+.high_light{
+	background: green;
+	font: color: white;
+}
+
+</style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js
+"></script>
+<script type="text/javascript">
+
+$(function () {
+	var tds = $(this).find("td");
+	$("tr:gt(0)").dblclick(function () {
+		$(this).remove();
+		$("input[type=text]").val("");
+		
+	});
+	$("tr:gt(0)").mouseover(function () {
+		$(this).addClass("high_light");
+	});
+	$("tr:gt(0)").mouseleave(function () {
+		$(this).removeClass("high_light");
+	});
+	
+	$("tr:gt(0)").click(function () { //tr중 0번째 이상인것 
+		
+		//선택한 tr의 td들을 모두 찾아줘 - 배열이 될거얌
+		$("#name").val( $(tds[0]).text()); //html을 $()제이쿼리로 감싸기
+		$("#kor").val($(tds[1]).text()); //text, html 둘다 가능
+		$("#eng").val($(tds[2]).html());
+		$("#math").val($(tds[3]).html());
+		
+	});
+});
+</script>
+</head>
+<body>
+	이름: <input type="text" id="name"><br>
+	국어: <input type="text" id="kor"><br>
+	영어: <input type="text" id="eng"><br>
+	수학: <input type="text" id="math"><br>
+	
+
+<table width="80%">
+	<tr><td>이름</td><td>국어</td><td>영어</td><td>수학</td></tr>
+	<tr><td>성빈</td><td>100</td><td>100</td><td>100</td></tr>
+	<tr><td>선겸</td><td>100</td><td>90</td><td>90</td></tr>
+	<tr><td>선영</td><td>100</td><td>80</td><td>100</td></tr>
+	<tr><td>소연</td><td>100</td><td>90</td><td>90</td></tr>
+	<tr><td>희진</td><td>100</td><td>70</td><td>100</td></tr>
+	<tr><td>한별</td><td>100</td><td>60</td><td>90</td></tr>
+</table>
+
+</body>
+</html>

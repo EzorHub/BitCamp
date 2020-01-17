@@ -1,0 +1,12 @@
+package com.BOB.vo;
+
+public class SNS_REPLY {
+
+	private int reply_no;
+	private String reply_content;
+	private int sns_no;
+	private int cust_no;
+	private int provider_no;
+	
+	
+}

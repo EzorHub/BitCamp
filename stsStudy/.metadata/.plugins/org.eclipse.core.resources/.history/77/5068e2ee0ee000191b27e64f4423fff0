@@ -1,0 +1,11 @@
+package com.BOB.vo;
+
+public class PaymentVo {
+
+	private int pay_no;
+	private String pay_name;
+	private int reser_no;
+	private int get_pass_no;
+	private String coupon_no;
+	
+}

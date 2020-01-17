@@ -1,0 +1,122 @@
+package com.bookstore.controller;
+
+import java.util.HashMap;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.bookstore.dao.BookDao;
+import com.bookstore.vo.BookVo;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+@Controller
+public class BookController {
+
+	@Autowired
+	public BookDao bookdao;
+	public void setBookdao(BookDao bookdao) {
+		this.bookdao = bookdao;
+	}
+	
+	//-----------------------------------------
+	@ResponseBody
+	@RequestMapping("/getTotalBook")
+	public String getTotalBookCount() {
+		String str = "";
+		try{
+			ObjectMapper mapper = new ObjectMapper();
+			str = mapper.writeValueAsString(bookdao.getCount());			
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return str;
+	}
+	
+	@ResponseBody
+	@RequestMapping("/getPagingBookList")
+	public String getPagingBookList(int nowPage,int perPage) { //한 화면에 보여지는 레코드 수
+		/*시작레코드, 마지막레코드
+		 * sql뽑는 것
+		 * */		
+		String str = "";
+		//------------------------------
+		int start = (nowPage-1)*perPage+1;
+		int end = start+perPage-1;
+		//------------------------------
+		HashMap map = new HashMap();
+		map.put("start", start);
+		map.put("end", end);
+		try {
+			ObjectMapper mapper = new ObjectMapper();
+			System.out.println("1");
+			str = mapper.writeValueAsString(bookdao.listPage(map));
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return str;
+		
+	}
+	
+	//-----------------------------------------
+	@ResponseBody
+	@RequestMapping("/editBooks")
+	public String editBooks(String oper, BookVo b) {
+		System.out.println("oper: "+oper);
+		String r = "";
+		switch(oper) {
+			case"add":r=bookdao.insertBook(b)+"";break;
+			case"edit":r=bookdao.updateBook(b)+"";break;
+			case"del":r=bookdao.deleteBook(b)+"";break;
+		}
+		return r;
+	}
+	
+	
+	
+	
+	//jqgrid - p52
+	@ResponseBody
+	@RequestMapping("/getBooks")	
+	public ModelAndView getBooks(int page, int rows) { //크롬-개발자도구-네트워크에서 파람이름 알게됨
+		System.out.println("page: "+page);
+		System.out.println("rows: "+rows);		
+		
+		ModelAndView mav = new ModelAndView();
+		int totalRecord = bookdao.getCount();
+		int totalPage = (int)Math.ceil(totalRecord/(double)rows);
+		int start = (page-1)*rows+1;
+		int end = start +rows-1;
+		mav.addObject("list", bookdao.listAll(start, end));
+		mav.addObject("page", page); //현재페이지
+		//보여줄레코드수
+		mav.addObject("totalRecord", rows); //전체레코드 수
+		mav.addObject("totalPage", totalPage); //전체 페이지
+		return mav;
+	}
+	
+	//-----------------------------------------
+	@ResponseBody
+	@RequestMapping("/listAllBook")
+	public String list(int start, int end) {
+		String str = "";
+		try {
+			ObjectMapper mapper = new ObjectMapper();
+			str = mapper.writeValueAsString(bookdao.listAll(start, end));
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return str;
+	}
+	
+	@RequestMapping("/index.do")
+	public void index() {
+	
+	}
+
+	
+}

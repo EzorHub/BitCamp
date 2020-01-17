@@ -1,0 +1,26 @@
+package com.bit.aop;
+
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
+
+import com.bit.goods.dao.GoodsDao;
+
+@Configuration
+@EnableAspectJAutoProxy
+public class SpringConfig {
+	
+	
+	@Bean
+	public ProfilingAdvice profilingAdvice() {
+		return new ProfilingAdvice();
+	}
+
+	@Bean
+	public GoodsDao dao() {
+		return new GoodsDao();
+	}
+	
+	
+}

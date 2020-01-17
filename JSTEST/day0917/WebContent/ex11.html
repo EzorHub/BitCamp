@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+
+#canvas{
+	border: 1px solid grey;
+}
+</style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.6.1.min.js"></script>
+<script type="text/javascript">
+$(function () {
+	//그래픽을 표현하려고 다음을 준비함--------------------------
+	var canvas = document.getElementById("canvas");
+	var context = canvas.getContext("2d");
+	//---------------------------------------------
+	var position;
+	
+	$(canvas).toggle(function(event){//캔버스 한번 누름
+		position = $(this).offset(); //이걸 x, y를 빼줘야함 - 0.0에 가깜도록
+		var x = event.pageX - position.left;
+		var y = event.pageY- position.top;
+		
+		context.beginPath();
+		context.moveTo(x,y);
+		
+	}, function (event) { //캔버스 또한번 누름
+		position = $(this).offset(); //이걸 x, y를 빼줘야함 - 0.0에 가깜도록
+		var x = event.pageX - position.left;
+		var y = event.pageY- position.top;
+		
+		context.lineTo(x,y); //저짝으로 선만들준비
+		context.stroke(); //선그려줘
+	});
+	
+	
+});
+
+</script>
+</head>
+<body>
+
+<canvas id="canvas" width="700" height="500"></canvas>
+
+</body>
+</html>

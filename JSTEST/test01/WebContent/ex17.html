@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+	var dept = [ [ "100", "개발1부", "서울" ], [ "200", "개발2부", "부산" ],
+			[ "300", "개발3부", "제주" ] ];
+	window.onload = function() {
+
+		document.getElementById("btn").onclick = function() {
+			
+			var tr = document.createElement("tr");
+			
+			var td1 = document.createElement("td1");
+			var td2 = document.createElement("td2");
+			var td3 = document.createElement("td3");
+			
+			var tx1 = document.createTextNode(dept.)
+			
+			/*forEach 반복문과,
+			동적으로 테이블 생성*/
+
+			document.getElementById("result").innerHTML = str;
+		}
+	}
+</script>
+</head>
+<body>
+	<h2>부서목록</h2>
+	<hr>
+	<table id="result" width="100%">
+		<tr>
+			<td>부서번호</td>
+			<td>부서명</td>
+			<td>부서위치</td>
+		</tr>
+
+	</table>
+	<button id="btn">조회</button>
+</body>
+</html>

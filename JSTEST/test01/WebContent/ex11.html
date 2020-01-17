@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+	/*객체배열로 수정*/
+	window.onload = function() {
+		document.getElementById("btn").onclick = function() {
+
+			var str = "";
+			var dept = [ {
+				dno : 100,
+				dname : "개발1부",
+				dloc : "서울"
+			}, {
+				dno : 200,
+				dname : "개발2부",
+				dloc : "서울"
+			}, {
+				dno : 300,
+				dname : "개발3부",
+				dloc : "서울"
+			}, ];
+
+			str += "<table width='100%'>";
+			str += "<tr>";
+			str += "<td>부서번호</td>";
+			str += "<td>부서명</td>";
+			str += "<td>부서위치</td>";
+			str += "</tr>";
+			for (var i = 0; i < dept.length; i++) {
+				str += "<tr>";
+				var d = dept[i];
+				str += "<td> " + d.dno+ " </td>";
+				str += "<td> " + d.dname+ " </td>";
+				str += "<td> " + d.dloc+ " </td>";
+				str += "</tr>";
+			}
+			str += "</table>";
+			document.getElementById("result").innerHTML = str;
+		}
+	}
+</script>
+</head>
+<body>
+	<h2>부서목록</h2>
+	<div id="result"></div>
+	<button id="btn">누르셈</button>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+.high_light{
+	background: green;
+	font: color: white;
+}
+</style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+$(function () {
+	
+	$("h1").bind({ //객체로 표현,,, 잘안되넹..
+		"mouseover":function(){
+			$(this).addClass("high_light");
+		},
+		"mouseleave": function(){
+			$(this).removeClass("high_light");
+		}
+	}
+	
+	/* $("h1").bind("mouseover", function () {
+		$(this).addClass("high_light");
+	});
+	$("h1").bind("mouseleave", function () {
+		$(this).removeClass("high_light");
+	}); */
+});
+
+</script>
+</head>
+<body>
+<h1>둘리</h1>
+<h1>둘리여친</h1>
+<h1>포동</h1>
+</body>
+</html>

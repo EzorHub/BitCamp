@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	window.onload = function() {
+		var ul = document.getElementById("ul");
+		var li = document.getElementsByTagName("li");			
+		for(var i =0;i<li.length;i++){
+			
+			li[i].ondblclick = function(){
+				ul.removeChild(this);
+			}
+		}
+		
+		 
+			
+		
+	}
+</script>
+</head>
+<body>
+
+<ul id="ul">
+<li  >청포도</li>
+<li >파인애플</li>
+<li >무화과</li>
+<li >망고</li>
+<li >복숭아</li>
+</ul>
+
+</body>
+</html>

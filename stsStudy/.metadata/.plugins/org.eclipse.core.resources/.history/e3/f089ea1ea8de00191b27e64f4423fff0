@@ -1,0 +1,17 @@
+package com.chat.dao;
+
+import org.springframework.stereotype.Repository;
+
+import com.chat.db.DBManager;
+import com.chat.vo.ScheduleVo;
+
+@Repository
+public class ScheduleDao {
+	
+	public int insert(ScheduleVo s) {
+		return DBManager.insertSchedule(s);
+	}
+	
+	
+
+}

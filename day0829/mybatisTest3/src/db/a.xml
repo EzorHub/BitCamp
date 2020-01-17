@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+  
+  <!--  너의 원래이름은 sqlConfig.xml ..을 대신함 -->
+<configuration>
+<typeAliases>
+	<typeAlias type="vo.BookVo" alias="bookVo"/>
+	<typeAlias type="vo.DeptVo" alias="deptVo"/>
+</typeAliases>
+  <environments default="development">
+    <environment id="development">
+      <transactionManager type="JDBC"/>
+      <dataSource type="POOLED">
+       <property name="driver" value="oracle.jdbc.driver.OracleDriver"/>
+        <property name="url" value="jdbc:oracle:thin:@203.236.209.118:1521:XE"/>
+        <property name="username" value="c##madang"/>
+        <property name="password" value="madang"/>
+      </dataSource>
+    </environment>
+  </environments>
+  <mappers>
+    <mapper resource="db/bookMapper.xml"/>       
+    <mapper resource="db/deptMapper.xml"/>
+  </mappers>
+</configuration>

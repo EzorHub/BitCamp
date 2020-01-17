@@ -1,0 +1,12 @@
+package com.BOB.vo;
+
+public class Cafe_ReviewVo {
+
+	private int review_no;
+	private String review_content;
+	private int grade;
+	private int cafe_no;
+	private int cust_no;
+	
+	
+}

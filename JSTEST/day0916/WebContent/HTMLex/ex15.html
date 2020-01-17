@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>pdf264</title>
+<script type="text/javascript">
+	window.onload = function() {
+
+		var pass = document.getElementById("pwd").value;
+		var pass_check = document.getElementById("pwd_check").value;
+		if (pass == pass_check) {
+			alert("암호일치");
+			//return true; 생략
+		} else {
+			alert("암호 불일치")
+			return false;
+		}
+		/* document.getElementById("myForm").onsubmit = function () {
+			
+			return false; //가지맛 - submit의 기본이벤트를 제거
+		} */
+	}
+</script>
+</head>
+<body>
+
+	<form id="myForm" action="result.jsp" method="post">
+		암호: <input type="password" id="pwd"><br> 암호확인: <input
+			type="password" id="pwd_check"><br> <input type="submit"
+			value="확인">
+
+
+	</form>
+</body>
+</html>

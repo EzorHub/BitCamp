@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style type="text/css">
+/*다시 보세요,,뭐가 안되네,,*/
+	div{
+		border: 1px solid black;
+		margin:10px;
+		
+	}
+</style>
+<script type="text/javascript">
+	
+	window.onload = function (e) {
+		var div = document.getElementById("div");
+		alert("b");
+		var event = e || window.event;
+		event.cancleBubble = true;
+		if( event.stopPropergation ){ //부모노드의 이벤트제거
+			event.stopProperdateion();
+		}
+	}
+</script>
+</head>
+<body>
+	<div onclick="alert('a')">안녀엉
+	<div id="div" >추석</div>
+	</div>
+</body>
+</html>

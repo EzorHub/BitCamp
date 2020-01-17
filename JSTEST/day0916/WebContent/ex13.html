@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-3.4.1.min.js
+"></script>
+<script type="text/javascript">
+	$(function() {
+		var str = "";
+		var arr = $("input[type=checkbox]:checked");
+		$.each(arr, function(idx, item){
+			str += $(item).val()+" ";
+			
+		});
+		alert(str);
+	});
+</script>
+</head>
+<body>
+	<input type="checkbox" value="오렌지" checked="checked">오렌지
+	<input type="checkbox" value="망고">망고
+	<input type="checkbox" value="무화과" checked="checked">무화과
+	<input type="checkbox" value="복숭아" checked="checked">복숭아
+	<input type="checkbox" value="파인애플">파인애플
+	
+	
+</body>
+</html>

@@ -1,0 +1,10 @@
+package com.BOB.vo;
+
+public class HashTagVo {
+
+	private int tag_no;
+	private String tag_content;
+	private int std_no;
+	
+	
+}

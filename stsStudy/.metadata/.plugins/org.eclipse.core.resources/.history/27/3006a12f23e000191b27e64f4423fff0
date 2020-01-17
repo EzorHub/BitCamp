@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="goods">
+
+<select id="nextJumunNo" resultType="java.lang.Integer">
+    select nvl(max(jumun_no),0)+1 from jumun
+  </select>
+   
+  <insert id="insertJumun">
+    insert into jumun values(#{no}, #{custid},#{total},sysdate)
+  </insert>
+   
+  <insert id="insertJumunDetail">
+    insert into jumun_detail values(seq_jumun_detail.nextval,#{jumun_no},#{goods_no},#{qty})
+  </insert>
+
+	<select id="listPage" resultType="goodsvo">
+	select no, name, price, qty, fname from (
+	select rownum n, no, name, price, qty, fname from goods) a where a.n between #{start} and #{end} 
+	</select>	
+	<select id="count" resultType="java.lang.Integer">
+	select count(*) from goods
+	</select>
+  <select id="listGoods" resultType="goodsvo">
+    select * from goods order by no desc
+  </select>
+  <select id="goodsInfo" resultType="goodsvo">
+    select name, price, qty, fname from goods
+  </select>
+</mapper>

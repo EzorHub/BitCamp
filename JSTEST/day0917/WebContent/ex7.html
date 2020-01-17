@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+.high_light{
+	background: green;
+	
+}
+</style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.6.1.min.js"></script>
+<script type="text/javascript">
+$(function () {
+	$("h1").one("click", function(){  //이벤트를 한번만 발생하고 싶음 - unbind안해도됨
+		$(this).html("클릭"); //ex7이랑 8 바뀐듯
+		alert("안녕");
+	});
+	
+});
+
+</script>
+</head>
+<body>
+<h1>둘리1</h1>
+<h1>둘리2</h1>
+<h1>둘리3</h1>
+
+</body>
+</html>

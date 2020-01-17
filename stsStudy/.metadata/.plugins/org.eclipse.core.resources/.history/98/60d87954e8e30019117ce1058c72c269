@@ -1,0 +1,10 @@
+package com.chat.vo;
+
+public class BitMemberVo {
+
+	private String id;
+	private String email;
+	private int pay;
+	
+	
+}

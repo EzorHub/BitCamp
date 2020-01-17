@@ -1,0 +1,17 @@
+package com.BOB.vo;
+
+public class Room_ReserVo {
+	private int reser_no;
+	private int cust_no;
+	private int room_no;
+	private String reser_date;
+	private int reser_start;
+	private int reser_time;
+	private int user_num;
+	private int total;
+	
+	
+	
+	
+
+}

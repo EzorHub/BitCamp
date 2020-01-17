@@ -1,0 +1,5 @@
+package com.bookstore.db;
+
+public class DBManager {
+
+}

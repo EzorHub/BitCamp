@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript">
+	window.onload = function()
+	{
+		var selTr; //선택된 tr이얌
+		var tb;
+		
+		var name, kor, eng, math;		
+		document.getElementById("btnUpdate").onclick = function () {
+			var tds = selTr.childNodes;
+			tds[0].innerHTML = name.value;
+			tds[1].innerHTML = kor.value;
+			tds[2].innerHTML = eng.value;
+			tds[3].innerHTML = math.value;
+		}
+		document.getElementById("btnDel").onclick = function () {
+			tb.removeChild(selTr);			
+		}
+		document.getElementById("btnAdd").onclick = function()
+		{
+			tb = document.getElementById("tb");
+			
+			var trs = document.getElementsByTagName("tr");
+			
+			
+			name= document.getElementById("name");
+			kor = document.getElementById("kor");
+			eng = document.getElementById("eng");
+			math = document.getElementById("math");
+			
+			var txName = document.createTextNode(name.value);
+			var txKor = document.createTextNode(kor.value);
+			var txEng = document.createTextNode(eng.value);
+			var txMath = document.createTextNode(math.value);
+			
+			var td1 = document.createElement("td");
+			var td2 = document.createElement("td");
+			var td3 = document.createElement("td");
+			var td4 = document.createElement("td");
+			
+			td1.appendChild(txName);
+			td2.appendChild(txKor);
+			td3.appendChild(txEng);
+			td4.appendChild(txMath);
+			
+			var tr = document.createElement("tr");
+			tr.appendChild(td1);
+			tr.appendChild(td2);
+			tr.appendChild(td3);
+			tr.appendChild(td4);
+			
+			tb.appendChild(tr);
+			
+				
+			//미래의 tr에 대한 이벤트는 tr이 만들어지는 곳에서!	
+			tr.onmouseover = function(){
+				if(this != selTr){
+				this.style.background = "green";
+				}
+			}
+			tr.onmouseleave = function(){
+				if(this != selTr){
+				this.style.background = "white";
+				}
+			}
+			tr.onclick = function () {
+				var trs = document.getElementsByTagName("tr");
+				for(var i = 0;i<trs.length;i++){
+					
+					trs[i].style.background = "white"
+					}
+				this.style.background = "red";
+				selTr = this;
+				
+				var tds = this.childNodes;
+				//document.getElementById("name").value = tds[0].innerHTML;
+				name.value = tds[0].innerHTML;
+				kor.value = tds[1].innerHTML;
+				eng.value = tds[2].innerHTML;
+				math.value = tds[3].innerHTML;
+
+			}
+			
+			
+		
+		}
+		
+	}
+</script>
+</head>
+<body>
+	이름 : <input type="text" id="name"><br>
+	국어 : <input type="text" id="kor"><br>
+	영어 : <input type="text" id="eng"><br>
+	수학 : <input type="text" id="math"><br>
+	<button id="btnAdd">추가</button>
+	<button id="btnUpdate">수정</button>
+	<button id="btnDel">삭제</button>
+	<hr>
+	<table id="tb" border="1" width="80%">
+		<tr onclick="">
+			<td>이름</td>
+			<td>국어</td>
+			<td>영어</td>
+			<td>수학</td>
+		</tr>
+	</table>
+</body>
+</html>

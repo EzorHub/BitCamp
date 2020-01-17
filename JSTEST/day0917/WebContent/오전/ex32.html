@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+</style>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-3.4.1.min.js
+"></script>
+<script type="text/javascript">
+	$(function() {
+		$("#btnMove").click(function () {
+			$("div").clone( $("h2")  );
+		});
+	});
+</script>
+</head>
+<body>
+	<h2>안녕</h2>
+	<hr>
+	<div></div> <!-- 안녕이 div안으로 이동 -->
+	<hr>
+	<button id="btnMove">이동</button>
+
+</body>
+</html>

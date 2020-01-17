@@ -1,0 +1,16 @@
+package com.chat;
+
+import org.springframework.mail.javamail.JavaMailSenderImpl;
+import org.springframework.stereotype.Component;
+
+@Component
+public class SmtpComonent {
+	public JavaMailSenderImpl javaMailSender() {
+		JavaMailSenderImpl r 
+		= new JavaMailSenderImpl();
+		r.setHost("");		
+		
+		return r;
+	}
+
+}

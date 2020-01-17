@@ -1,0 +1,36 @@
+create table dept(
+dno number primary key,
+dname varchar2(20), 
+dloc varchar2(20)
+);
+
+insert into dept values(
+100,
+'개발부',
+'제주'
+);
+insert into dept values(
+100,
+'개발1부',
+'서울'
+);
+insert into dept values(
+200,
+'개발2부',
+'영국'
+);
+insert into dept values(
+300,
+'개발3부',
+'호주'
+);
+insert into dept values(
+400,
+'영업부',
+'서울'
+);
+insert into dept values(
+500,
+'관리부',
+'서울'
+);

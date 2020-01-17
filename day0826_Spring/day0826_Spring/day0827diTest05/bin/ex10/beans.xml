@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean class="ex10.Book" id="book"
+		autowire="byName"
+		p:bookid="1"
+		p:bookname="철학콘서트"
+		p:publisher="철학철학"
+		p:price="10800"
+		/>
+	<bean class="ex10.Customer" id="customer"
+		p:custid="100"
+		p:name="스녕"
+		p:addr="김포"
+		p:phone="010-" 
+		/>
+	<bean class="ex10.BookStore" id="bs"
+		autowire="byName"/>
+</beans>

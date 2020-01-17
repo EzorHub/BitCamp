@@ -1,0 +1,5 @@
+<Resource auth="Container" driverClassName="oracle.jdbc.driver.OracleDriver" maxActive="20" maxIdle="10" maxWait="-1" name="oracle" password="madang" type="javax.sql.DataSource" url="jdbc:oracle:thin:@IP주소:orcl" username="c##madang"/>
+
+URIEncoding="UTF-8"
+
+jstl .jar 2개, cos.jar(이미지용)

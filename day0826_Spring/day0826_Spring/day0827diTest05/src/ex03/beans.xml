@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="book" class="ex03.Book">
+		<constructor-arg value="1" />
+		<constructor-arg value="꽃을 보듯 너를 본다" />
+		<constructor-arg value="몰라용" />
+		<constructor-arg value="9000" />
+	</bean>
+	<bean id="customer" class="ex03.Customer">
+		<constructor-arg value="1000" />
+		<constructor-arg value="뚱이" />
+		<constructor-arg value="서울시 마포구" />
+		<constructor-arg value="010-1234-5678" />
+	</bean>
+	<bean id="bs" class="ex03.BookStore">
+		<constructor-arg ref="book" />
+		<constructor-arg ref="customer" />
+	</bean>
+
+</beans>

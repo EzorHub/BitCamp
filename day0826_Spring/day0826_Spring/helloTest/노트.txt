@@ -1,0 +1,3 @@
+hello.do
+	-HelloController
+	-WEB-INF/Views/hello.xml

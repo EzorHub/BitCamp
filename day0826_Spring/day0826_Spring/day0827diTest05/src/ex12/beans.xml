@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<bean class="ex12.SmsSender" id="smsSender">
+<constructor-arg  name="from" value="헛개수"/>
+<constructor-arg  name="to" value="17차"/>
+</bean>
+<bean class="ex12.SmsSender" id="smsSender">
+<constructor-arg name="from" value="어피치"/>
+<constructor-arg name="to" value="콘"/>
+</bean>
+
+<bean class="ex12.SystemMonitor" id="sm" autowire="constructor">
+<constructor-arg name="periodTime" value="5"/>
+
+</bean>
+
+
+
+</beans>

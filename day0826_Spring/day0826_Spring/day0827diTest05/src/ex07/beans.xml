@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="smsSender" class="ex07.SmsSender"
+			p:from="라이언"
+			p:to="무지"/>
+	<bean id="sm" class="ex07.SystemMonitor"
+		p:periodTime="5"
+		p:sender-ref="smsSender"/>	
+	
+<!-- 
+	<bean id="smsSender" class="ex07.SmsSender">
+		<property name="from" value="튜브" />
+		<property name="to" value="콘" />
+	</bean>
+	<bean id="sm" class="ex07.SystemMonitor">
+		<property name="periodTime" value="5" />
+		<property name="sender" ref="smsSender" />
+	</bean>
+-->
+</beans>

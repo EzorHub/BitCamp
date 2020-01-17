@@ -1,0 +1,111 @@
+<%@page import="java.util.Calendar"%>
+<%@page import="java.util.Date"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+span {
+	background-color: pink;
+}
+
+table {
+	
+	background-image: url("ddd.jpg");
+	opacity: 0.65 !important;
+}
+</style>
+</head>
+<body>
+	
+	<%
+		Date thisyear = new Date();
+		int year = thisyear.getYear() + 1900;
+		int month = thisyear.getMonth() + 1;
+		
+		if(request.getParameter("month")!=null){
+			month = Integer.parseInt(request.getParameter("month"));
+			year = Integer.parseInt(request.getParameter("year"));
+			if(month==13){		
+					year = year+1;
+					month = 1;					
+			}else if(month==0){
+				year = year-1;
+				month = 12;
+					
+			}
+		}
+
+		final int d = 1;
+
+		Date today = new Date(year, month, d);
+		int d_blank = today.getDay();
+		Calendar ca = Calendar.getInstance();
+		int lastday = ca.getActualMaximum(Calendar.DAY_OF_MONTH);
+
+		int n = 1;
+		int c = 1;
+		int blank = d_blank;
+		//그 달의 1일의 요일 정수값을 알아와
+		//그 숫자만큼 빈칸을 출력하기
+		
+	%>
+
+	<h2>
+
+		<font color="green"><span> 
+		<a href="tableTest.jsp?month=<%= month-1%>&year=<%=year%>">◀</a><%=year%> 년 
+		<%=month%> <a href="tableTest.jsp?month=<%= month+1%>&year=<%=year%>">▶</a>월
+		</span></font>
+	</h2>
+	<%
+		
+		
+	%>
+
+	<table border="1" width="30%">
+
+		<tr>
+			<td>일</td>
+			<td>월</td>
+			<td>화</td>
+			<td>수</td>
+			<td>목</td>
+			<td>금</td>
+			<td>토</td>
+		</tr>
+		<tr>
+
+			<%
+				for (int i = 1; i <= 5; i++) {
+
+					for (int j = 1; j <= 7; j++) {
+						if (n >= lastday) {
+							break;
+						}
+						if (c <= d_blank) {
+							c++;
+			%>
+			<td></td>
+			<%
+				} else {
+			%><td><%=n++%></td>
+			<%
+				}
+
+					}
+			%>
+		</tr>
+		<tr>
+			<%
+				}
+			%>
+		
+	</table>
+	
+
+</body>
+</html>

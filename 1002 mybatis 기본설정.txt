@@ -1,0 +1,119 @@
+
+properties
+driver=oracle.jdbc.driver.OracleDriver
+url=jdbc:oracle:thin:@localhost:1521:XE
+user=c##madang
+pwd=madang
+
+config
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+<properties resource="com/msg/db/db.properties"/>
+<typeAliases>
+<typeAlias type="com.msg.vo.BitMemberVo" alias="membervo"/>
+</typeAliases>
+
+  <environments default="development">
+    <environment id="development">
+      <transactionManager type="JDBC"/>
+      <dataSource type="POOLED">
+        <property name="driver" value="${driver}"/>
+        <property name="url" value="${url}"/>
+        <property name="username" value="${user}"/>
+        <property name="password" value="${pwd}"/>
+      </dataSource>
+    </environment>
+  </environments>
+  <mappers>
+    <mapper resource="com/msg/db/sendMapper.xml"/>
+  </mappers>
+</configuration>
+
+sendMapper
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="send">
+  <select id="listAll" resultType="membervo">
+    select * from bitmember
+  </select>
+</mapper>
+
+ed bitmember
+create table bitmember(
+id varchar2(20) primary key,
+email varchar2(100),
+pay number
+);
+
+
+ed bit
+
+insert into bitmember values('bit01','hachanzzzz@gmail.com',1000,'01012341234');
+insert into bitmember values('bit03','sunkyeum@gmail.com',2000,'01072866233');
+insert into bitmember values('bit04','vt.kims4@gmail.com',2000,'01025250710');
+insert into bitmember values('bit05','sundaycitron@naver.com',2000,'01031465768');
+insert into bitmember values('bit06','aibaisuru@gmail.com',2000,'01029677208');
+insert into bitmember values('bit09','930112joy@gmail.com',2000,'01046560811');
+insert into bitmember values('bit10','rhgksquf@gmail.com',2000,'01032435894');
+ 
+insert into bitmember values('bit08','seob91@gmail.com',2000,'01020354564');
+insert into bitmember values('bit11','ksy30127@gmail.com',5000,'01035467475');
+insert into bitmember values('bit12','seljik@naver.com',2000,'01028988510');
+insert into bitmember values('bit13','rola70@nate.com',2000,'01025598279');
+insert into bitmember values('bit14','1029seon@gmail.com',2000,'01062634807');
+insert into bitmember values('bit15','gofl854@naver.com',7000,'01033033112');
+insert into bitmember values('bit16','msb9876@naver.com',2000,'01068689295');
+insert into bitmember values('bit17','nada_red@naver.com',2000,'01059404530');
+insert into bitmember values('bit18','rhddbgkqtlek@naver.com',15000,'01087966399');
+ 
+insert into bitmember values('bit19','ffpdhddl@gmail.com',2000,'01062683365');
+insert into bitmember values('bit20','limchangsung@gmail.com',5000,'01071236450');
+insert into bitmember values('bit21','godkkoo@gmail.com',2000,'01055509157');
+insert into bitmember values('bit22','wjrdjs005@naver.com',2000,'01098786076');
+insert into bitmember values('bit23','jatket@naver.com',4000,'01072736628');
+
+COLUMN name FORMAT A10;
+COLUMN fname FORMAT A10;
+COLUMN no FORMAT 9999;
+COLUMN price FORMAT 9999999;
+COLUMN qty FORMAT 99999;
+
+COLUMN bookname FORMAT A20;
+COLUMN publisher FORMAT A15;
+COLUMN bookid FORMAT 99999;
+
+COLUMN eno FORMAT 9999;
+COLUMN ename FORMAT A8;
+COLUMN addr FORMAT A6;
+COLUMN job FORMAT A6;
+COLUMN tel FORMAT A15;
+COLUMN sal FORMAT 99999;
+COLUMN comm FORMAT 99999;
+COLUMN mgr FORMAT 9999;
+COLUMN dno FORMAT 999;
+
+COLUMN dname FORMAT A8;
+COLUMN dloc FORMAT A6;
+
+COLUMN evt_name FORMAT A10;
+COLUMN evt_date FORMAT A10;
+
+COLUMN custid FORMAT A10;
+
+COLUMN order_date FORMAT A8;
+COLUMN total FORMAT 9999999;
+
+COLUMN id FORMAT A10;
+COLUMN email FORMAT A25;
+COLUMN pay FORMAT 99999;
+COLUMN phone FORMAT A11;
+
+
+
+
+

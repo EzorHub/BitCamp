@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<h2>회원가입</h2>
+	
+	<form action="result.jsp" method="post">
+	
+		아이디: <input type="text" name="id" size="10" maxlength="15" required="required"><br>
+		암호: <input type="password" name="pwd" required="required"><br>
+		이름: <input type="text" name="name" required="required"><br>
+		
+		취미: 
+			<input type="checkbox" name="hobby" value="마라톤">마라톤
+			<input type="checkbox" name="hobby" value="수영">수영
+			<input type="checkbox" name="hobby" value="플라잉요가">플라잉요가
+			<input type="checkbox" name="hobby" value="영화감상">영화감상
+			<br>
+			
+		직업: 
+			<select name="job">
+				<option value="학생">학생</option>
+				<option value="회사원">회사원</option>
+				<option value="자영업">자영업</option>
+				<option value="취업준비생">취업준비생</option>
+				<option value="기타">기타</option>
+			</select>
+			<br>
+			
+		성별: 
+			<input type="radio" name="gender" value="남자">남자
+			<input type="radio" name="gender" value="여자">여자
+			<br>
+			
+		나이:<input type="number" name="age" value="25" min="20" max="40"><br>
+		이메일:<input type="email" name="email"><br>
+		전화번호:<input type="tel" name="tel"><br>
+		생일:<input type="date" name="birth" value="1995-01-01"><br>
+		자기소개:<br><textarea row="10" cols="80" name="self"></textarea><br>
+		
+		<input type ="submit" value="가입하기">	
+		
+	</form>
+	
+</body>
+</html>
